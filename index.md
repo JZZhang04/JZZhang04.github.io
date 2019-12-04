@@ -3,11 +3,11 @@
 
 [Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3/)
 
-[Predicting Housing Price in Nashville, Tennessee](https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo.html/)
+[Predicting Housing Price in Nashville, Tennessee](https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo/)
 
-[Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/index.html/)
+[Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/index/)
 
-[Philadelphia Gunshot Map](https://toadha.github.io/692_final/index.html/)
+[Philadelphia Gunshot Map](https://toadha.github.io/692_final/index/)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 

@@ -25,4 +25,5 @@
 ### Contact
 
 [Linkedin](https://www.linkedin.com/in/jiazuozhang)
+[jiazuozhang@icloud.com](jiazuozhang@icloud.com)
 

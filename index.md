@@ -1,8 +1,8 @@
 # Jiazuo Zhang
 
 ## Education                                                                                                                                                                           
-Master of Urban Spatial Analytics, University of Pennsylvania  
-Bachelor of Engineering, Beijing Forestry University  
+>Master of Urban Spatial Analytics, University of Pennsylvania  
+>Bachelor of Engineering, Beijing Forestry University  
             
 
 ## ACADEMIC PROJECTS

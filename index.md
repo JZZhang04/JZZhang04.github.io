@@ -1,6 +1,9 @@
 # Jiazuo Zhang
 
->Hi, welcome to my page.
+## ACADEMIC PROJECTS                                                                                                                                                                           
+Master of Urban Spatial Analytics, University of Pennsylvania,  May, 2019
+Bachelor of Engineering, Beijing Forestry University,  July, 2018     
+            
 
 ## ACADEMIC PROJECTS
 ![](https://github.com/ToadHa/ToadHa.github.io/blob/master/1.png/)

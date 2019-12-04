@@ -1,32 +1,17 @@
 # Jiazuo Zhang
 ## ACADEMIC PROJECTS
 
-### Markdown
+Predicting Heroin Overdoses in Cincinnati, Ohio
+the webpage is published at: https://toadha.github.io/Project2_ver3.html
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Predicting Housing Price in Nashville, Tennessee
+the webpage is published at: https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo.html
 
-```markdown
-Syntax highlighted code block
+MUSA 611 Midterm Project: Hotels in Miami
+the webpage is published at: https://toadha.github.io/cpln692-week7-midterm/assignment/index.html
 
-# Header 1
-
-## Predicting Heroin Overdoses in Cincinnati, Ohio
-### Header 3
-
-## Predicting Housing Price in Nashville, Tennessee
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
+MUSA 611 Final Project: Philadelphia Gunshot Map
+the webpage is published at: https://toadha.github.io/692_final/index.html
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
 ### Jekyll Themes

@@ -1,7 +1,7 @@
 # Jiazuo Zhang
 ## ACADEMIC PROJECTS
 
-[Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3.html/)
+[Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/)
 
 [Predicting Housing Price in Nashville, Tennessee](https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo/)
 

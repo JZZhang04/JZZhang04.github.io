@@ -1,12 +1,12 @@
 # Jiazuo Zhang
 
 ## Education                                                                                                                                                                           
-Master of Urban Spatial Analytics, University of Pennsylvania  May 2019
-Bachelor of Engineering, Beijing Forestry University  July 2018     
+Master of Urban Spatial Analytics, University of Pennsylvania  
+Bachelor of Engineering, Beijing Forestry University  
             
 
 ## ACADEMIC PROJECTS
-![hh](/blob/master/1.png/)
+![hh](https://toadha.github.io/1.png)
 
 [Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3)
 

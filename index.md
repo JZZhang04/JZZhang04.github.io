@@ -5,9 +5,9 @@
 
 [Predicting Housing Price in Nashville, Tennessee](https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo/)
 
-[Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/index/)
+[Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/)
 
-[Philadelphia Gunshot Map](https://toadha.github.io/692_final/index/)
+[Philadelphia Gunshot Map](https://toadha.github.io/692_final/)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 

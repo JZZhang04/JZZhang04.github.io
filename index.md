@@ -5,7 +5,7 @@
 >Bachelor of Engineering, Beijing Forestry University  
             
 
-## ACADEMIC PROJECTS
+## Academic Projects
 
 [Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3)
 ![1](https://toadha.github.io/1.png)

@@ -14,9 +14,11 @@
 ![2](https://toadha.github.io/2.png)
 
 [Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/index.html)
+
 ![3](https://toadha.github.io/3.png)
 
 [Philadelphia Gunshot Map](https://toadha.github.io/692_final/index.html)
+
 ![4](https://toadha.github.io/4.png)
 
 

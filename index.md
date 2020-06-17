@@ -31,5 +31,5 @@
 
 [Linkedin](https://www.linkedin.com/in/jiazuozhang)
 
-jiazuozhang@icloud.com 
-<form action="http://formspree.io/jiazuozhang@icloud.com"><input type="email" name="_replyto"><textarea   name="body"></textarea><input type="submit" value="Send"></form>
+
+https://formspree.io/jiazuozhang@icloud.com 

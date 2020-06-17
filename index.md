@@ -27,9 +27,13 @@
 
 ![5](https://toadha.github.io/5.png)
 
-### Contact
+### Contact Me
 
 [Linkedin](https://www.linkedin.com/in/jiazuozhang)
+Email: jiazuozhang@icloud.com
 
-
-https://formspree.io/jiazuozhang@icloud.com 
+<form action="https://formspree.io/xdowdkkl" method="POST">
+  <input type="text" name="name">
+  <input type="email" name="_replyto">
+  <input type="submit" value="Send">
+</form>

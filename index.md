@@ -33,10 +33,9 @@
 
 
 
-### Contact Me
+## Contact Me
 
 [Linkedin](https://www.linkedin.com/in/jiazuozhang)
-
 Email: jiazuozhang@icloud.com
 
 <form action="https://formspree.io/xdowdkkl" method="POST">

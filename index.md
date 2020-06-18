@@ -27,6 +27,12 @@
 
 ![5](https://toadha.github.io/5.png)
 
+## Publications
+
+[Research on the Assembling Mechanism of Square Dancing Based on Spatial Factors](http://oversea.cnki.net/kcms/detail/detail.aspx?recid=&FileName=GHSI201902008&DbName=CJFDLAST2019&DbCode=CJFD)
+
+
+
 ### Contact Me
 
 [Linkedin](https://www.linkedin.com/in/jiazuozhang)

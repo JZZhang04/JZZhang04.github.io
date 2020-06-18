@@ -7,7 +7,7 @@
 
 ## Academic Projects
 
-[##Herroin Overdose Analysis of Cincinnati, Ohio](https://toadha.github.io/620final.html)
+[Herroin Overdose Analysis of Cincinnati, Ohio](https://toadha.github.io/620final.html)
 
 ![5](https://toadha.github.io/5.png)
 

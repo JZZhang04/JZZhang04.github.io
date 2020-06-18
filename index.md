@@ -7,6 +7,10 @@
 
 ## Academic Projects
 
+[Herroin Overdose Analysis of Cincinnati, Ohio](https://toadha.github.io/620final.html)
+
+![5](https://toadha.github.io/5.png)
+
 [Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3)
 
 ![1](https://toadha.github.io/1.png)
@@ -23,9 +27,6 @@
 
 ![4](https://toadha.github.io/4.png)
 
-[Herroin Overdose Analysis of Cincinnati, Ohio (Python version)](https://toadha.github.io/620final.html)
-
-![5](https://toadha.github.io/5.png)
 
 ## Publications
 

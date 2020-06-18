@@ -34,7 +34,7 @@
 Email: jiazuozhang@icloud.com
 
 <form action="https://formspree.io/xdowdkkl" method="POST">
-  Your Message: <input type="text" name="message"> 
-  Your Email: <input type="email" name="_replyto"> Your Email
+  Your Message: <input type="text" name="message"> <br>
+  Your Email: <input type="email" name="_replyto"> <br>
   <input type="submit" value="Send">
 </form>

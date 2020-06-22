@@ -7,25 +7,25 @@
 
 ## Academic Projects
 
-[Herroin Overdose Analysis of Cincinnati, Ohio](https://toadha.github.io/620final.html)
+[Herroin Overdose Analysis of Cincinnati, Ohio](https://JZZhang04.github.io/620final.html)
 
 ![5](https://toadha.github.io/5.png)
 
-[Predicting Heroin Overdoses in Cincinnati, Ohio](https://toadha.github.io/Project2_ver3)
+[Predicting Heroin Overdoses in Cincinnati, Ohio](https://JZZhang04.github.io/Project2_ver3)
 
 ![1](https://toadha.github.io/1.png)
 
-[Predicting Housing Price in Nashville, Tennessee](https://toadha.github.io/Midterm_MUSA507_Sagari%26Jiazuo)
+[Predicting Housing Price in Nashville, Tennessee](https://JZZhang04.github.io/Midterm_MUSA507_Sagari%26Jiazuo)
 
 ![2](https://toadha.github.io/2.png)
 
-[Hotels Explorer of Miami](https://toadha.github.io/cpln692-week7-midterm/assignment/index.html)
+[Hotels Explorer of Miami](https://JZZhang04.github.io/cpln692-week7-midterm/assignment/index.html)
 
 ![3](https://toadha.github.io/3.png)
 
-[Philadelphia Gunshot Map](https://toadha.github.io/692_final/index.html)
+[Philadelphia Gunshot Map](https://JZZhang04.github.io/692_final/index.html)
 
-![4](https://toadha.github.io/4.png)
+![4](https://JZZhang04.github.io/4.png)
 
 
 ## Publications

@@ -1,9 +1,12 @@
 # Jiazuo Zhang
 
+
+
 ## Education                                                                                                                                                                           
 >Master of Urban Spatial Analytics, University of Pennsylvania  
 >Bachelor of Engineering, Beijing Forestry University  
             
+
 
 ## Academic Projects
 
@@ -26,6 +29,7 @@
 [Philadelphia Gunshot Map](https://JZZhang04.github.io/692_final/index.html)
 
 ![4](https://JZZhang04.github.io/4.png)
+
 
 
 ## Publications

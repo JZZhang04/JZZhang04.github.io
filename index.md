@@ -10,7 +10,9 @@
 
 ## Academic Projects
 
-[Handwritten Digits Recognition using Nerual Network](https://JZZhang04.github.io/Handwritten_Digits.html)
+[Handwritten Digits Recognition using Nerual Network](https://JZZhang04.github.io/Handwritten_Digits-2.html)
+
+![6](https://JZZhang04.github.io/6.png)
 
 ![i](https://JZZhang04.github.io/i.png)
 

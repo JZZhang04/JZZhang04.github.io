@@ -10,6 +10,8 @@
 
 ## Academic Projects
 
+[Handwritten Digits Recognition using Nerual Network](https://JZZhang04.github.io/Handwritten_Digits.html)
+
 [Herroin Overdose Analysis of Cincinnati, Ohio](https://JZZhang04.github.io/620final.html)
 
 ![5](https://JZZhang04.github.io/5.png)

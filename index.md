@@ -36,7 +36,7 @@
 
 ![4](https://JZZhang04.github.io/4.png)
 
-[.](https://JZZhang04.github.io/python+pandas测试题.html）
+
 
 ## Publications
 

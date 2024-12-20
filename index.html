@@ -11,14 +11,14 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-
+    
         .outer-container {
             display: flex;
             justify-content: center;
             padding: 20px;
             background-color: #f5f5f5;
         }
-
+    
         .container {
             display: flex;
             width: 90%;
@@ -26,43 +26,44 @@
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
+    
         .sidebar {
             background-color: #ffffff;
             color: #000;
             padding: 20px;
             width: 25%;
             border-right: 1px solid #ddd;
+            text-align: left; /* 左对齐 */
         }
-
+    
         .main-content {
             padding: 20px;
             width: 75%;
         }
-
+    
         .contact-icons {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
-
+    
         .contact-icons a {
             text-decoration: none;
             color: #0073b1;
             display: flex;
             align-items: center;
         }
-
+    
         .contact-icons a i {
             margin-right: 5px;
         }
-
+    
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-
+    
         .project {
             text-decoration: none;
             color: #333;
@@ -71,18 +72,18 @@
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-
+    
         .project:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
+    
         .project img {
             width: 100%;
             height: 150px;
             object-fit: cover;
         }
-
+    
         .project h3 {
             margin: 0;
             padding: 10px;
@@ -90,7 +91,13 @@
             font-size: 16px;
             text-align: center;
         }
+    
+        /* 增加行间隔 */
+        section {
+            margin-bottom: 20px;
+        }
     </style>
+    
 </head>
 <body>
     <div class="outer-container">
@@ -159,11 +166,11 @@
                             <h3>Handwritten Digits Recognition</h3>
                             <img src="6.png" alt="Project 4" />
                         </a>
-                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                        <a class="project" href="https://JZZhang04.github.io/cpln692-week7-midterm/assignment/index.html" target="_blank">
                             <h3>Hotels of Miami</h3>
                             <img src="3.png" alt="Project 5" />
                         </a>
-                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                        <a class="project" href="https://JZZhang04.github.io/692_final/index.html" target="_blank">
                             <h3>Philadelphia Gunshot Map</h3>
                             <img src="4.png" alt="Project 6" />
                         </a>

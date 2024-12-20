@@ -16,10 +16,6 @@ body {
 .container {
   display: flex;
   margin: 0 auto;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 /* Sidebar Styles */
@@ -34,6 +30,7 @@ body {
   color: white;
   text-align: center;
   box-sizing: border-box;
+  border-right: 2px solid #e9ecef;
 }
 
 .sidebar h1 {
@@ -44,20 +41,24 @@ body {
   margin: 10px 0;
 }
 
-.sidebar a {
-  color: #f1faee;
-  text-decoration: none;
+/* Contact Row (Social Links and Email) */
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
 }
 
-.contact-icons a {
-  display: block;
-  margin: 5px 0;
+.contact-row a {
+  color: #f1faee;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 /* Main Content Styles */
 .main-content {
-  width: 70%;
-  margin-left: 30%; /* Compensate for fixed sidebar width */
+  width: 65%;
+  margin-left: 35%; /* Compensate for fixed sidebar width + gap */
   padding: 20px;
   box-sizing: border-box;
 }

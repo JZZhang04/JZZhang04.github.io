@@ -6,164 +6,86 @@
     <title>Jiazuo Zhang</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* General Layout */
-        .container {
-            display: flex;
-        }
-        /* Sidebar Styling */
-        .sidebar {
-            width: 30%; /* Increased width */
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .sidebar h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .sidebar p {
-            margin-bottom: 15px;
-        }
-        .contact-icons a {
-            display: block;
-            margin-bottom: 10px;
-            color: #000;
-            text-decoration: none;
-        }
-        .contact-icons i {
-            margin-right: 8px;
-        }
-        /* Main Content Styling */
-        .main-content {
-            width: 70%;
-            padding: 20px;
-        }
-        .main-content section {
-            margin-bottom: 30px;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .project img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .project h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .project p {
-            margin: 0;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Sidebar -->
-        <div class="sidebar">
-            <h1>Jiazuo Zhang</h1>
-            <p>Master of Computer Science <br>Northeastern University (2024-2026)</p>
-            <p>
-                <i class="fas fa-envelope"></i> 
-                <a href="mailto:jiazuozhang@icloud.com">jiazuozhang@icloud.com</a>
-            </p>
-            <div class="contact-icons">
-                <a href="https://www.linkedin.com/in/jiazuozhang" target="_blank">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/JZZhang04" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+    <div class="outer-container">
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <h1>Jiazuo Zhang</h1>
+                <p>Master of Computer Science <br>Northeastern University (2024-2026)</p>
+                <p>
+                    <i class="fas fa-envelope"></i> 
+                    <a href="mailto:jiazuozhang@icloud.com">jiazuozhang@icloud.com</a>
+                </p>
+                <div class="contact-icons">
+                    <a href="https://www.linkedin.com/in/jiazuozhang" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/JZZhang04" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Education Section -->
-            <section>
-                <h2>Education</h2>
-                <div class="education">
-                    <h3>Northeastern University</h3>
-                    <p>Master of Science in Computer Science 2024 - 2026</p>
-                    <h3>University of Pennsylvania</h3>
-                    <p>Master of Urban Spatial Analytics 2018 - 2019</p>
-                    <h3>Beijing Forestry University</h3>
-                    <p>Bachelor of Engineering 2013 - 2018</p>
-                </div>
-            </section>
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Education Section -->
+                <section>
+                    <h2>Education</h2>
+                    <div class="education">
+                        <h3>Northeastern University</h3>
+                        <p>Master of Science in Computer Science 2024 - 2026</p>
+                        <h3>University of Pennsylvania</h3>
+                        <p>Master of Urban Spatial Analytics 2018 - 2019</p>
+                        <h3>Beijing Forestry University</h3>
+                        <p>Bachelor of Engineering 2013 - 2018</p>
+                    </div>
+                </section>
 
-            <!-- Professional Skills Section -->
-            <section>
-                <h2>Professional Skills</h2>
-                <p><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, HTML, CSS, R</p>
-                <p><strong>Frameworks & Libraries:</strong> React, Angular, Bootstrap, Leaflet, pandas</p>
-                <p><strong>Developer Tools:</strong> Git, Visual Studio Code, IntelliJ, Jupyter Notebook, MySQL Workbench, MongoDB</p>
-                <p><strong>Domain Knowledge:</strong> Object-Oriented Programming, Data Structures & Algorithms, Web Development</p>
-            </section>
+                <!-- Professional Skills Section -->
+                <section>
+                    <h2>Professional Skills</h2>
+                    <ul>
+                        <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, HTML, CSS, R</li>
+                        <li><strong>Frameworks & Libraries:</strong> React, Angular, Bootstrap, Leaflet, pandas</li>
+                        <li><strong>Developer Tools:</strong> Git, Visual Studio Code, IntelliJ, Jupyter Notebook, MySQL Workbench, MongoDB</li>
+                        <li><strong>Domain Knowledge:</strong> Object-Oriented Programming, Data Structures & Algorithms, Web Development</li>
+                    </ul>
+                </section>
 
-            <!-- Projects Section -->
-            <section>
-                <h2>Projects</h2>
-                <div class="projects-grid">
-                    <div class="project">
-                        <h3>Online Learning Management Web Application</h3>
-                        <img src="7.png" alt="Project 1" />
-                        <p>
-                            <a href="https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas" target="_blank">
-                                View Project
-                            </a>
-                        </p>
+                <!-- Projects Section -->
+                <section>
+                    <h2>Projects</h2>
+                    <div class="projects-grid">
+                        <a class="project" href="https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas" target="_blank">
+                            <h3>Online Learning Management Web Application</h3>
+                            <img src="7.png" alt="Project 1" />
+                        </a>
+                        <a class="project" href="https://JZZhang04.github.io/620final.html" target="_blank">
+                            <h3>Heroin Overdose Analysis</h3>
+                            <img src="5.png" alt="Project 2" />
+                        </a>
+                        <a class="project" href="https://JZZhang04.github.io/Project2_ver3" target="_blank">
+                            <h3>Predicting Heroin Overdoses</h3>
+                            <img src="1.png" alt="Project 3" />
+                        </a>
+                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                            <h3>Handwritten Digits Recognition</h3>
+                            <img src="6.png" alt="Project 4" />
+                        </a>
+                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                            <h3>Hotels of Miami</h3>
+                            <img src="3.png" alt="Project 5" />
+                        </a>
+                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                            <h3>Philadelphia Gunshot Map</h3>
+                            <img src="4.png" alt="Project 6" />
+                        </a>
                     </div>
-                    <div class="project">
-                        <h3>Heroin Overdose Analysis</h3>
-                        <img src="5.png" alt="Project 2" />
-                        <p>
-                            <a href="https://JZZhang04.github.io/620final.html" target="_blank">
-                                View Project
-                            </a>
-                        </p>
-                    </div>
-                    <div class="project">
-                        <h3>Predicting Heroin Overdoses</h3>
-                        <img src="1.png" alt="Project 3" />
-                        <p>
-                            <a href="https://JZZhang04.github.io/Project2_ver3" target="_blank">
-                                View Project
-                            </a>
-                        </p>
-                    </div>
-                    <div class="project">
-                        <h3>Handwritten Digits Recognition</h3>
-                        <img src="6.png" alt="Project 4" />
-                        <p>
-                            <a href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
-                                View Project
-                            </a>
-                        </p>
-                    </div>
-                    <div class="project">
-                        <h3>Hotels of Miami</h3>
-                        <img src="3.png" alt="Project 5" />
-                        <p>
-                            <a href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
-                                View Project
-                            </a>
-                        </p>
-                    </div>
-                    <div class="project">
-                        <h3>Philadelphia Gunshot Map</h3>
-                        <img src="4.png" alt="Project 6" />
-                        <p>
-                            <a href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
-                                View Project
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
     </div>
 </body>

@@ -97,6 +97,13 @@ body {
   color: #333;
 }
 
+.project img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
 .project p {
   margin: 0;
   font-size: 0.9rem;

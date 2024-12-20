@@ -38,7 +38,8 @@ body {
 }
 
 .sidebar p {
-  margin: 10px 0;
+  text-align: left; /* 使段落文本左对齐 */
+  font-family: 'Roboto', sans-serif; /* 确保使用 Roboto 字体 */
 }
 
 /* Contact Row (Social Links and Email) */

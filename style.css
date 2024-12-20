@@ -116,6 +116,15 @@ body {
   object-fit: contain; /* 保证图标在框内适应 */
 }
 
+.education-item h3 {
+  margin-bottom: 5px; /* 在校名下面增加一些间距 */
+}
+
+.education-item p {
+  margin-top: 0; /* 确保学位与校名之间有合适的间距 */
+  margin-bottom: 15px; /* 学位信息的下方留一些间距 */
+}
+
 h3 {
   margin: 0;
   font-size: 18px;

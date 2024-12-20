@@ -1,3 +1,2 @@
-theme: jekyll-theme-minimal
-title: Jiazuo Zhang
-description: Bookmark this to keep an eye on my project updates!
+markdown: kramdown
+theme: jekyll-theme-slate

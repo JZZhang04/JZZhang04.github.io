@@ -110,8 +110,8 @@ body {
 }
 
 .education-icon {
-  width: 14px; /* 设置图标的宽度 */
-  height: 14px; /* 设置图标的高度，保持图标的正方形 */
+  width: 24px; /* 设置图标的宽度 */
+  height: 24px; /* 设置图标的高度，保持图标的正方形 */
   margin-right: 10px; /* 图标与文本之间的间距 */
   object-fit: contain; /* 保证图标在框内适应 */
 }

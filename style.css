@@ -102,3 +102,21 @@ body {
 .project h3 {
   margin: 10px 0;
 }
+
+.education-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.education-icon {
+  width: 14px; /* 设置图标的宽度 */
+  height: 14px; /* 设置图标的高度，保持图标的正方形 */
+  margin-right: 10px; /* 图标与文本之间的间距 */
+  object-fit: contain; /* 保证图标在框内适应 */
+}
+
+h3 {
+  margin: 0;
+  font-size: 18px;
+}

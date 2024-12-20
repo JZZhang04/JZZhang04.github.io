@@ -2,13 +2,18 @@
 
 
 
-## Education                                                                                                                                                                           
->Master of Urban Spatial Analytics, University of Pennsylvania  
->Bachelor of Engineering, Beijing Forestry University  
+## Education                                                                                                                            
+>Master of Computer Science, Northeastern university   2024-2026                                             
+>Master of Urban Spatial Analytics, University of Pennsylvania  2018-2019
+>Bachelor of Engineering, Beijing Forestry University  2013-2018
             
 
 
 ## Academic Projects
+
+[Online Learning Management Web Application](https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas)
+
+![7](https://JZZhang04.github.io/7.png)
 
 [Handwritten Digits Recognition using Nerual Network](https://JZZhang04.github.io/Handwritten_Digits-2.html)
 

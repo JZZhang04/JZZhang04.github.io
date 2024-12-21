@@ -125,3 +125,11 @@ h3 {
   margin: 0;
   font-size: 18px;
 }
+
+ul {
+  margin-bottom: 20px; /* 列表和其他内容之间的间距 */
+}
+
+ul li {
+  margin-bottom: 10px; /* 列表项之间的间距 */
+}

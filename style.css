@@ -106,7 +106,7 @@ body {
 .education-item {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .education-icon {

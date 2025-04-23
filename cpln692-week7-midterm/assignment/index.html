@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- =====================
+      Add elements in this space-->
+      <button id='previous' class="button">Back</button> <button id="next" class="button">Next</button>
+      <!--====================== -->
+    </div>
+    <!-- Map -->
+    <div id="map" class="map"></div>
+    <div class="legend"></div>
+      <div id='leg1' class="legend" style="display: none">
+      </ul class="legBox">
+      <h3>Legend</h3>
+        <li id="hotl">Hotel</li>
+        <li id="motl">Motel</li>
+        <li id="bnb">Bed & Breakfast</li>
+        <li id="cndo">Condo Hotel</li>
+        <li id="dwel">Dwell</li>
+      </div>
+      <div id='leg2' class="legend" style="display: none">
+      </ul class="legBox">
+      <h3>Legend</h3>
+        <li id="a">less than 20 rooms</li>
+        <li id="b">20 to 100 rooms</li>
+        <li id="c">100 to 500 rooms</li>
+        <li id="d">more than 500 rooms</li>
+      </div>
+    </div>
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js" integrity="sha256-O4179En8zabOlPYBNvGp8cF0uh0vnSZpW4Q6Ul1h+8c=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <script src="midtermFunctions.js"></script>
+    <!--<script src="leaflet.js"></script>-->
+    <script src="main.js"></script>
+  </body>
+</html>

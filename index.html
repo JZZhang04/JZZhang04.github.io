@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiazuo Zhang</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        .outer-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+    
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .sidebar {
+            background-color: #ffffff;
+            color: #000;
+            padding: 20px;
+            width: 25%;
+            border-right: 1px solid #ddd;
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; 
+        }
+    
+        .main-content {
+            padding: 20px;
+            width: 75%;
+        }
+    
+        .contact-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center; /* 水平居中 */
+        }
+    
+        .contact-icons a {
+            text-decoration: none;
+            color: #0073b1;
+            display: flex;
+            align-items: center;
+        }
+    
+        .contact-icons a i {
+            margin-right: 5px;
+        }
+    
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+    
+        .project {
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+    
+        .project:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .project img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+    
+        .project h3 {
+            margin: 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            font-size: 16px;
+            text-align: center;
+        }
+    
+        /* 增加行间隔 */
+        section {
+            margin-bottom: 20px;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <div class="outer-container">
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Left Sidebar -->
+            <div class="sidebar">
+                <h1>Jiazuo Zhang</h1>
+                <p>Currently pursuing a degree in Computer Science, I possess expertise in creating user interfaces and refining software components. Proficient in JavaScript, React, and Angular, eager to apply skills for front end, full stack and map developments.</p>
+                </br>
+                <div class="contact-icons">
+                    <a href="mailto:jiazuozhang04@gmail.com">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/jiazuozhang" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/JZZhang04" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Education Section -->
+                <section>
+                    <h2>Education</h2>
+                    <div class="education">
+                        <div class="education-item">
+                            <img src="NU.png" alt="Northeastern University Logo" class="education-icon">
+                            <h3>Northeastern University</h3>
+                            <p>Master of Science in Computer Science  2024 - 2026</p>
+                        </div>
+                        <div class="education-item">
+                            <img src="UPenn.png" alt="University of Pennsylvania Logo" class="education-icon">
+                            <h3>University of Pennsylvania</h3>
+                            <p>Master of Urban Spatial Analytics  2018 - 2019</p>
+                        </div>
+                        <div class="education-item">
+                            <img src="BFU.png" alt="Beijing Forestry University Logo" class="education-icon">
+                            <h3>Beijing Forestry University</h3>
+                            <p>Bachelor of Engineering  2013 - 2018</p>
+                        </div>
+                    </div>
+                </section>
+            </br>
+
+                <!-- Professional Skills Section -->
+                <section>
+                    <h2>Professional Skills</h2>
+                    <ul>
+                        <li><strong>Languages:</strong> Python, Java, JavaScript, TypeScript, HTML, CSS, R</li>
+                        <li><strong>Frameworks & Libraries:</strong> React, Angular, Bootstrap, Leaflet, pandas</li>
+                        <li><strong>Developer Tools:</strong> Git, Visual Studio Code, IntelliJ, Jupyter Notebook, MySQL Workbench, MongoDB</li>
+                        <li><strong>Domain Knowledge:</strong> Object-Oriented Programming, Data Structures & Algorithms, Web Development</li>
+                    </ul>
+                </section>
+            </br>
+
+                <!-- Projects Section -->
+                <section>
+                    <h2>Projects</h2>
+                    <div class="projects-grid">
+
+                        <a class="project"  target="_blank">
+                            <h3>CampusTrade: Student Marketplace Android App</h3>
+                            <img src="android_app.png" alt="Project 8" />
+                        </a>
+
+                        <a class="project"  target="_blank">
+                            <h3>GiddyUpGPT: Arthur Morgan's Digital Ranch</h3>
+                            <img src="arthurmorgan.png" alt="Project 7" />
+                        </a>
+                        
+                        <a class="project" href="https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas" target="_blank">
+                            <h3>Online Learning Management Web Application</h3>
+                            <img src="kanbas.png" alt="Project 6" />
+                        </a>
+
+                        <a class="project"  target="_blank">
+                            <h3>Full Stack Apparel E-Commerce Website</h3>
+                            <img src="ecommerce.png" alt="Project 5" />
+                        </a>
+
+                        <a class="project" href="https://JZZhang04.github.io/620final.html" target="_blank">
+                            <h3>Heroin Overdose Analysis</h3>
+                            <img src="5.png" alt="Project 2" />
+                        </a>
+
+                        <a class="project" href="https://JZZhang04.github.io/Project2_ver3" target="_blank">
+                            <h3>Predicting Heroin Overdoses</h3>
+                            <img src="1.png" alt="Project 4" />
+                        </a>
+
+                        <a class="project" href="https://JZZhang04.github.io/Handwritten_Digits-2.html" target="_blank">
+                            <h3>Handwritten Digits Recognition</h3>
+                            <img src="6.png" alt="Project 3" />
+                        </a>
+
+                        <a class="project" href="https://JZZhang04.github.io/cpln692-week7-midterm/assignment/index.html" target="_blank">
+                            <h3>Hotels of Miami</h3>
+                            <img src="3.png" alt="Project 2" />
+                        </a>
+
+                        <a class="project" href="https://JZZhang04.github.io/692_final/index.html" target="_blank">
+                            <h3>Philadelphia Gunshot Map</h3>
+                            <img src="4.png" alt="Project 1" />
+                        </a>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+body {
+    padding: 0;
+    overflow: hidden;
+    font-family: colfax, helvetica, arial, sans-serif;
+}
+
+p.main {
+  font-size: 24px;
+}
+
+.map {
+    position: absolute;
+    right: 0px;
+    left: 400px;
+    height: 100%;
+    top: 0;
+}
+
+.sidebar {
+    position: absolute;
+    left: 0px;
+    width: 400px;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.legend {
+  position: absolute;
+  z-index: 2000;
+  left: 500px;
+  width: 400px;
+  top: 0;
+}
+
+
+.legBox {
+	  display: inline;
+	  padding-left: 10px;
+	  border: 1px;
+	  border-color: '#000000';
+	  list-style: none;
+}
+
+
+li::before {
+	  padding-right: 10px;
+	  content: "\25A0";
+	  font-size: 1.5em;
+}
+
+#mon::before {color: yellow;}
+#tue::before {color: coral;}
+#wed::before {color: lime;}
+#thu::before {color: seagreen;}
+#fri::before {color: aqua;}

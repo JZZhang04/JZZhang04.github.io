@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style>
+        body { margin:0; padding:0; }
+    </style>
+
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- =====================
+      Add elements in this space-->
+      <div class='map-overlay' id='features'><h2>Philadelphia Shooting Explorer</h2><div id='pd'>
+      <hr>
+      <p>This map shows gun violence records of Philadelpia from 2015. Click the points to see more information.</p></div></div>
+      <hr>
+      <h3><span style="font-size: 20px; color: white;"><i class="fas fa-eye"></i></span>  All Records</h3>
+      <button id='Show_All' class="button2">Show</button>
+      <button id='Hide_All' class="button2">Clear</button>
+      <br>
+      <h3><span style="font-size: 20px; color: white;"><i class="far fa-calendar-alt"></i></span>  Filter by Year</h3>
+      <div>
+        <select id='mySelect'>
+          <option id='select' class="boldoption">select a year</option>
+          <option id='2015' class="boldoption">2015</option>
+          <option id='2016' class="boldoption">2016</option>
+          <option id='2017' class="boldoption">2017</option>
+          <option id='2018' class="boldoption">2018</option>
+          <option id='2019' class="boldoption">2019</option>
+        </select>
+      </div>
+
+      <h3><span style="font-size: 20px; color: white;"><i class="fas fa-building"></i></span>  Filter by location</h3>
+      <button id='interior' class="button2">Interior</button>
+      <button id='exterior' class="button2">Exterior</button>
+      <br>
+      <h3><span style="font-size: 20px; color: white;"><i class="fas fa-male"></i></span>  Filter by race</h3>
+      <div>
+        <select id='mySelect2'>
+          <option id='select' class="boldoption">victims by race</option>
+          <option id='Black' class="boldoption">Black</option>
+          <option id='White' class="boldoption">White</option>
+          <option id='Asian' class="boldoption">Asian</option>
+          <option id='American Indian' class="boldoption">American Indian</option>
+          <option id='Other' class="boldoption">Other</option>
+        </select>
+      </div>
+      <br>
+      <hr>
+      <h4><span style="font-size: 5px; color: red;"><i class="fas fa-circle"></i></span> Fatal</h4>
+      <h4><span style="font-size: 5px; color: orange;"><i class="fas fa-circle"></i></span> Nonfatal</h4>
+      <h4><span style="font-size: 5px; color: purple;"><i class="fas fa-circle"></i></span> Unknown</h4>
+      <!--====================== -->
+    </div>
+    <!-- Map -->
+    <!-- <div id='before' class='map'></div>
+    <div id='after' class='map'></div>-->
+    <div id="map" class="map"></div>
+    <canvas id="myChart">MyChart</canvas>
+      </div>
+    </div>
+    <!-- Javascript Imports -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore.js" integrity="sha256-O4179En8zabOlPYBNvGp8cF0uh0vnSZpW4Q6Ul1h+8c=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="js/setup.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

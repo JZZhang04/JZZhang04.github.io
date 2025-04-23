@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.outer-container {
+  width: 100%;
+  padding: 0 10%; /* Add 10% margin on both sides */
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 30%; /* Fixed width */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fixed sidebar */
+  top: 0;
+  left: 10%; /* Matches the left margin of the outer-container */
+  padding: 20px;
+  background-color: #1d3557;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  border-right: 2px solid #e9ecef;
+}
+
+.sidebar h1 {
+  margin-bottom: 10px;
+}
+
+.sidebar p {
+  text-align: left; /* 使段落文本左对齐 */
+  font-family: 'Roboto', sans-serif; /* 确保使用 Roboto 字体 */
+}
+
+/* Contact Row (Social Links and Email) */
+.contact-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.contact-row a {
+  color: #f1faee;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Main Content Styles */
+.main-content {
+  width: 65%;
+  margin-left: 35%; /* Compensate for fixed sidebar width + gap */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.main-content h2 {
+  margin-top: 0;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Project Images */
+.project img {
+  width: 100%; /* Full width */
+  aspect-ratio: 3 / 2; /* Maintain 3:2 aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container */
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.project h3 {
+  margin: 10px 0;
+}
+
+.education-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.education-icon {
+  width: 24px; /* 设置图标的宽度 */
+  height: 24px; /* 设置图标的高度，保持图标的正方形 */
+  margin-right: 10px; /* 图标与文本之间的间距 */
+  object-fit: contain; /* 保证图标在框内适应 */
+}
+
+
+.education-item p {
+  margin-left: 10px; /* 确保学位与校名之间有合适的间距 */
+}
+
+h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+ul {
+  margin-bottom: 20px; /* 列表和其他内容之间的间距 */
+}
+
+ul li {
+  margin-bottom: 10px; /* 列表项之间的间距 */
+}

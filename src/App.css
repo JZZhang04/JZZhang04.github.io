@@ -63,10 +63,11 @@ body {
 
 .project-card h3 {
   margin: 0 0 8px 0;
+  font-size: 20px;
 }
 
 .project-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: #555;
 }
 
@@ -96,11 +97,12 @@ body {
 .skills h4,
 .education h4 {
   margin-bottom: 6px;
+  font-size: 17px;
 }
 
 .skills p {
   color: #555;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .exp-item {
@@ -109,11 +111,11 @@ body {
 
 .exp-item p {
   margin: 4px 0;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .exp-item span {
-  font-size: 13px;
+  font-size: 14px;
   color: #777;
 }
 
@@ -196,5 +198,32 @@ body {
 .links a:hover {
   background-color: #e0e0e0;
   transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .project-card h3 {
+    font-size: 18px;
+  }
+
+  .project-card p {
+    font-size: 14px;
+  }
+
+  .skills h4,
+  .education h4 {
+    font-size: 15px;
+  }
+
+  .skills p {
+    font-size: 14px;
+  }
+
+  .exp-item p {
+    font-size: 14px;
+  }
+
+  .exp-item span {
+    font-size: 13px;
+  }
 }
 

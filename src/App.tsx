@@ -88,12 +88,14 @@ function App() {
       <header className="header">
 
         <h1>Jiazuo Zhang</h1>
-        <p className="subtitle">
-          Software Engineer | AI-Driven Platforms | Frontend Systems
+        <p className="tagline">Software Engineer building AI automation and user-facing products</p>
+        <p className="about">
+          MSCS at Northeastern University · Software Engineering Intern at Blinkle AI<br />
+          Focused on full-stack web development, AI-powered workflows, and product-driven engineering.
         </p>
 
         <div className="links">
-          <a href="/Jiazuo_Zhang_Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <a href="/Resume_Jiazuo_Zhang.pdf" target="_blank" rel="noopener noreferrer">
             <IconFile className="link-icon" />
             Resume
           </a>
@@ -114,71 +116,73 @@ function App() {
       </header>
 
       <section className="projects">
-        <h2>Featured Projects</h2>
+        <h2>Selected Projects</h2>
 
         <div className="project-grid">
 
           <div className="project-card">
             <img src="/ecommerce.png" alt="E-commerce" />
-            <h3>Full Stack E-Commerce Platform</h3>
-            <p>
-              Angular + Spring Boot marketplace with Stripe integration and REST API architecture.
-            </p>
+            <h3>Full-Stack E-Commerce Platform</h3>
+            <p>Built a full-stack shopping platform with Angular and Spring Boot, featuring 10+ REST APIs, secure authentication, and Stripe checkout.</p>
+            <p className="stack">Angular · Spring Boot · MySQL · Stripe</p>
             <div className="buttons">
-              <a href="LIVE_LINK" target="_blank" rel="noopener noreferrer">Live</a>
+              <a href="https://ecommerce-angular-jzzhang.netlify.app" target="_blank" rel="noopener noreferrer">Live</a>
               <a href="https://github.com/JZZhang04/angular-ecommerce" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-
-          <div className="project-card">
-            <img src="/kanbas1.png" alt="Kanbas" />
-            <h3>Canvas-style Learning Platform</h3>
-            <p>
-              React + TypeScript web app supporting course modules and assignment workflows.
-            </p>
-            <div className="buttons">
-              <a href="https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas/Dashboard" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="https://github.com/JZZhang04/Kanbas-front-end" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-
-          <div className="project-card">
-            <img src="/Arthur.png" alt="Arthur" />
-            <h3>Character-based AI Chatbot </h3>
-            <p>
-              LLM-powered conversational character-based agent.
-            </p>
-            <div className="buttons">
-              <a href="LIVE_LINK" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="https://github.com/JZZhang04/GiddyUpGPT" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </div>
-
-          <div className="project-card">
-            <img src="/android_app.png" alt="CampusTrade" />
-            <h3>Student Marketplace Android App </h3>
-            <p>
-              A data-driven marketplace platform using Java, Firebase Realtime Database, and Firestore.
-            </p>
-            <div className="buttons">
-              <a href="LIVE_LINK" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="GITHUB_LINK" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
 
           <div className="project-card">
             <img src="/cryptids.png" alt="Cryptids" />
             <h3>Cryptids Map of America</h3>
-            <p>
-              Map of cryptids in America, with React, TypeScript, Vite, and React-Leaflet.
-            </p>
+            <p>Built an interactive geospatial web app with React, TypeScript, and Leaflet, featuring searchable locations, filters, clustering, and animated map transitions.</p>
+            <p className="stack">React · TypeScript · Leaflet · Geospatial UI</p>
             <div className="buttons">
-              <a href="LIVE_LINK" target="_blank" rel="noopener noreferrer">Live</a>
+              <a href="https://jzzhang04.github.io/cryptids-map" target="_blank" rel="noopener noreferrer">Live</a>
               <a href="https://github.com/JZZhang04/cryptids-map" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
           </div>
 
-          
+          <div className="project-card">
+            <img src="/Arthur.png" alt="Arthur" />
+            <h3>LLM-Powered Conversational Agent</h3>
+            <p>Developed a conversational AI system with persona control, memory management, and structured evaluation across 100+ multi-turn test scenarios.</p>
+            <p className="stack">Python · FastAPI · LLMs · Evaluation</p>
+            <div className="buttons">
+              <a href="https://huggingface.co/spaces/JZZhang04/GiddyUpGPT" target="_blank" rel="noopener noreferrer">Live</a>
+              <a href="https://github.com/JZZhang04/GiddyUpGPT" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div className="project-card">
+            <img src="/android_app.png" alt="CampusTrade" />
+            <h3>Student Marketplace Android App</h3>
+            <p>Built an Android marketplace app with Java and Firebase, supporting authentication, product posting, secure CRUD workflows, and real-time listing updates.</p>
+            <p className="stack">Java · Firebase · Firestore · Real-time Sync</p>
+            <div className="buttons">
+              <a href="https://drive.google.com/file/d/1l8B1td1zjNWFX19xp8BBiTvVnWDWl8S9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Live</a>
+              <a href="https://github.com/CS5520Spring2025Feinberg/project-group-13" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div className="project-card">
+            <img src="/kanbas1.png" alt="Kanbas" />
+            <h3>Learning Management Web App</h3>
+            <p>Developed a course platform with React, Redux, Node.js, and MongoDB, featuring role-based workflows, content organization, and quiz functionality.</p>
+            <p className="stack">React · Redux · Node.js · MongoDB</p>
+            <div className="buttons">
+              <a href="https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas/Dashboard" target="_blank" rel="noopener noreferrer">Live</a>
+              <a href="https://github.com/JZZhang04/Kanbas-front-end" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div className="project-card project-card-placeholder">
+            <div className="project-placeholder" aria-hidden="true">
+              More projects
+            </div>
+            <h3>More Projects in Progress</h3>
+            <p>More projects are currently in development and will be added here soon.</p>
+            <p className="stack">Stay tuned for upcoming work</p>
+          </div>
 
         </div>
       </section>
@@ -190,29 +194,37 @@ function App() {
 
           <div>
             <h4>Languages</h4>
-            <p>Python, JavaScript, TypeScript, Java, SQL, C/C++, R</p>
+            <div className="tag-group">
+              {["Python", "JavaScript", "TypeScript", "Java", "SQL", "C/C++", "R"].map(s => <span key={s} className="tag">{s}</span>)}
+            </div>
           </div>
 
           <div>
             <h4>Frontend & Backend</h4>
-            <p>React, Next.js, Angular, Redux, Spring Boot, Node.js, REST APIs</p>
+            <div className="tag-group">
+              {["React", "Next.js", "Angular", "Redux", "Spring Boot", "Node.js", "REST APIs"].map(s => <span key={s} className="tag">{s}</span>)}
+            </div>
           </div>
 
           <div>
             <h4>Databases</h4>
-            <p>MySQL, PostgreSQL, MongoDB, Firebase, SQLite</p>
+            <div className="tag-group">
+              {["MySQL", "PostgreSQL", "MongoDB", "Firebase", "SQLite"].map(s => <span key={s} className="tag">{s}</span>)}
+            </div>
           </div>
 
           <div>
             <h4>Machine Learning</h4>
-            <p>PyTorch, scikit-learn, pandas, NumPy</p>
+            <div className="tag-group">
+              {["PyTorch", "scikit-learn", "pandas", "NumPy"].map(s => <span key={s} className="tag">{s}</span>)}
+            </div>
           </div>
 
         </div>
       </section>
 
       <section className="education">
-        <h2>Background</h2>
+        <h2>Education Background</h2>
 
         <div className="exp-item">
           <div className="exp-header">
@@ -251,8 +263,9 @@ function App() {
             <img src="/logos/accenture.png" alt="Accenture" />
             <h4>Accenture</h4>
           </div>
-          <p>Business Analyst · Enterprise Data Platforms</p>
+          <p>Technology Consultant · Enterprise Data Platforms</p>
           <span>Shanghai, China · 2021 – 2022</span>
+          <p>Worked on data integration, platform specifications, dashboards, and business system workflows.</p>
         </div>
       </section>
 

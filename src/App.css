@@ -22,13 +22,13 @@
   inset: -32%;
   background: conic-gradient(
     from 180deg,
-    rgba(34, 211, 238, 0.26),
-    rgba(244, 114, 182, 0.18),
+    rgba(69, 214, 255, 0.14),
+    rgba(111, 124, 255, 0.12),
     rgba(255, 255, 255, 0.02),
-    rgba(34, 211, 238, 0.26)
+    rgba(69, 214, 255, 0.14)
   );
-  filter: blur(40px);
-  animation: orbitSpin 18s linear infinite;
+  filter: blur(54px);
+  animation: orbitSpin 26s linear infinite;
 }
 
 .hero-orbit > * {
@@ -53,12 +53,12 @@
 
 .coverflow-shell::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(8, 17, 31, 0.94), rgba(8, 17, 31, 0));
+  background: linear-gradient(90deg, rgba(12, 18, 32, 0.94), rgba(12, 18, 32, 0));
 }
 
 .coverflow-shell::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(8, 17, 31, 0.94), rgba(8, 17, 31, 0));
+  background: linear-gradient(270deg, rgba(12, 18, 32, 0.94), rgba(12, 18, 32, 0));
 }
 
 .coverflow-track {
@@ -88,6 +88,21 @@
   transform: translateZ(-40px);
 }
 
+.cursor-glow {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle, rgba(69, 214, 255, 0.24) 0%, rgba(69, 214, 255, 0.14) 20%, rgba(69, 214, 255, 0.07) 42%, rgba(111, 124, 255, 0.07) 60%, rgba(12, 18, 32, 0) 78%);
+  filter: blur(24px);
+  opacity: 0.86;
+  transition:
+    left 90ms ease-out,
+    top 90ms ease-out,
+    opacity 180ms ease-out;
+}
+
 @keyframes orbitSpin {
   from {
     transform: rotate(0deg);
@@ -102,7 +117,8 @@
   .section-fade,
   .section-fade.is-visible,
   .project-shell,
-  .hero-orbit::before {
+  .hero-orbit::before,
+  .cursor-glow {
     animation: none !important;
     transition: none !important;
     transform: none !important;

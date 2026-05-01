@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type WheelEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import "./App.css";
 
 type IconProps = { className?: string };
@@ -10,7 +10,6 @@ type Project = {
   image: string;
   live?: string;
   github?: string;
-  accent: string;
   eyebrow: string;
 };
 
@@ -21,6 +20,12 @@ type TimelineItem = {
   title: string;
   detail: string;
   period: string;
+};
+
+type Metric = {
+  label: string;
+  value?: string;
+  items?: string[];
 };
 
 function IconFile({ className }: IconProps) {
@@ -78,18 +83,16 @@ const projects: Project[] = [
     image: "/ecommerce.png",
     live: "https://ecommerce-angular-jzzhang.netlify.app",
     github: "https://github.com/JZZhang04/angular-ecommerce",
-    accent: "from-[#f97316] via-[#fb7185] to-[#facc15]",
   },
   {
     eyebrow: "Spatial Storytelling",
-    title: "Cryptids Map of America",
+    title: "Cryptids Field Guide Map",
     description:
       "An interactive geospatial interface with filters, animated transitions, and clustered points that keep dense map states readable.",
     stack: ["React", "TypeScript", "Leaflet", "Geospatial UI"],
     image: "/cryptids.png",
     live: "https://jzzhang04.github.io/cryptids-map",
     github: "https://github.com/JZZhang04/cryptids-map",
-    accent: "from-[#0f766e] via-[#14b8a6] to-[#99f6e4]",
   },
   {
     eyebrow: "LLM Workflow",
@@ -100,7 +103,6 @@ const projects: Project[] = [
     image: "/Arthur.png",
     live: "https://huggingface.co/spaces/JZZhang04/GiddyUpGPT",
     github: "https://github.com/JZZhang04/GiddyUpGPT",
-    accent: "from-[#2563eb] via-[#60a5fa] to-[#c4b5fd]",
   },
   {
     eyebrow: "Mobile Marketplace",
@@ -111,7 +113,6 @@ const projects: Project[] = [
     image: "/android_app.png",
     live: "https://drive.google.com/file/d/1l8B1td1zjNWFX19xp8BBiTvVnWDWl8S9/view?usp=drive_link",
     github: "https://github.com/CS5520Spring2025Feinberg/project-group-13",
-    accent: "from-[#7c3aed] via-[#a855f7] to-[#f0abfc]",
   },
   {
     eyebrow: "Course Platform",
@@ -122,38 +123,29 @@ const projects: Project[] = [
     image: "/kanbas1.png",
     live: "https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas/Dashboard",
     github: "https://github.com/JZZhang04/Kanbas-front-end",
-    accent: "from-[#0f172a] via-[#334155] to-[#38bdf8]",
   },
 ];
 
 const skillGroups = [
   {
-    title: "Build",
-    items: ["React", "Next.js", "Angular", "Spring Boot", "Node.js", "REST APIs"],
+    title: "Frontend Systems",
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Angular", "Redux"],
   },
   {
-    title: "Data",
-    items: ["MySQL", "PostgreSQL", "MongoDB", "Firebase", "SQLite"],
+    title: "Backend & APIs",
+    items: ["Node.js", "NestJS", "Spring Boot", "REST APIs", "Java", "Python"],
   },
   {
-    title: "AI",
-    items: ["PyTorch", "pandas", "NumPy", "scikit-learn", "LLM Evaluation"],
+    title: "Data & Persistence",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "SQLite"],
   },
   {
-    title: "Language",
-    items: ["Python", "TypeScript", "JavaScript", "Java", "SQL", "C/C++", "R"],
+    title: "Applied AI",
+    items: ["LLM Workflows", "PyTorch", "scikit-learn", "pandas", "NumPy"],
   },
 ];
 
 const timeline: TimelineItem[] = [
-  {
-    logo: "/logos/accenture.png",
-    alt: "Accenture",
-    name: "Accenture",
-    title: "Technology Consultant · Enterprise Data Platforms",
-    detail: "Worked across data integration, system workflows, specifications, and dashboard-facing product delivery.",
-    period: "Shanghai · 2021 - 2022",
-  },
   {
     logo: "/logos/neu.png",
     alt: "Northeastern University",
@@ -163,10 +155,36 @@ const timeline: TimelineItem[] = [
     period: "Boston · 2024 - 2026",
   },
   {
+    logo: "/logos/blinkle.png",
+    alt: "Blinkle AI",
+    name: "Blinkle AI",
+    title: "Software Engineer Intern",
+    detail:
+      "Built full-stack AI product workflows with React, Next.js, NestJS, TypeScript, AWS Bedrock, SageMaker, PostgreSQL JSONB, and Stripe. Developed Chrome extension automation and backend-integrated LLM pipelines that improved data entry, resume generation, retrieval, payments, and environment isolation across production services.",
+    period: "Boston · 2025 - 2026",
+  },
+  {
+    logo: "/logos/accenture.png",
+    alt: "Accenture",
+    name: "Accenture",
+    title: "Technology Consultant · Enterprise Data Platforms",
+    detail: "Worked across data integration, system workflows, specifications, and dashboard-facing product delivery.",
+    period: "Shanghai · 2021 - 2022",
+  },
+  {
+    logo: "/probeinfo.png",
+    alt: "Probeinfo Technology",
+    name: "Probeinfo Technology",
+    title: "Technology Consultant · Urban Planning Data Systems",
+    detail:
+      "Supported the development and delivery of city-planning data software, including spatial data preparation, feature validation, and issue triage.",
+    period: "Shanghai · 2020 - 2021",
+  },
+  {
     logo: "/logos/upenn.png",
     alt: "University of Pennsylvania",
     name: "University of Pennsylvania",
-    title: "M.S. in Urban Spatial Analytics",
+    title: "Master of Urban Spatial Analytics",
     detail: "Training in spatial computing, analytics, and data-led decision making for real-world systems.",
     period: "Philadelphia · 2018 - 2019",
   },
@@ -183,7 +201,7 @@ const timeline: TimelineItem[] = [
 const navItems = [
   { label: "Projects", id: "projects" },
   { label: "Strengths", id: "strengths" },
-  { label: "Journey", id: "journey" },
+  { label: "Experience", id: "experience" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -191,12 +209,16 @@ function App() {
   const [headerCompact, setHeaderCompact] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [cursorGlow, setCursorGlow] = useState({ x: -240, y: -240 });
 
-  const metrics = useMemo(
+  const metrics = useMemo<Metric[]>(
     () => [
-      { label: "Focus", value: "AI + Product" },
-      { label: "Mode", value: "Full Stack" },
-      { label: "Strength", value: "Readable UX" },
+      { label: "Current Role", value: "Software Engineering Intern at Blinkle AI" },
+      { label: "Primary Focus", value: "Full-Stack Engineering · AI-Powered Applications" },
+      {
+        label: "Most Used Stack",
+        items: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+      },
     ],
     [],
   );
@@ -270,6 +292,24 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const container = carouselRef.current;
+    if (!container) return;
+
+    const handleWheel = (event: globalThis.WheelEvent) => {
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        event.preventDefault();
+        container.scrollBy({ left: event.deltaY * 1.1, behavior: "auto" });
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -283,20 +323,18 @@ function App() {
     container.scrollTo({ left, behavior: "smooth" });
   };
 
-  const handleCarouselWheel = (event: WheelEvent<HTMLDivElement>) => {
-    const container = carouselRef.current;
-    if (!container) return;
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    setCursorGlow({ x: event.clientX, y: event.clientY });
+  };
 
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      event.preventDefault();
-      container.scrollBy({ left: event.deltaY * 1.1, behavior: "auto" });
-    }
+  const handlePointerLeave = () => {
+    setCursorGlow({ x: -240, y: -240 });
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-[#08111f] text-stone-100 selection:bg-cyan-300/30 selection:text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.18),_transparent_32%),radial-gradient(circle_at_75%_20%,_rgba(244,114,182,0.14),_transparent_22%),linear-gradient(180deg,_#08111f_0%,_#07101a_45%,_#04070d_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[48rem] bg-[linear-gradient(120deg,rgba(255,255,255,0.05)_0%,transparent_18%,transparent_82%,rgba(255,255,255,0.04)_100%)] opacity-60" />
+    <div className="relative min-h-screen overflow-x-clip bg-[#0C1220] text-[#F3F6FB] selection:bg-[#45D6FF]/30 selection:text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[#0C1220]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[36rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.035),_transparent_62%)] opacity-80" />
 
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
@@ -304,7 +342,7 @@ function App() {
         }`}
       >
         <div
-          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/55 backdrop-blur-xl transition-all duration-500 ${
+          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[rgba(12,18,32,0.72)] backdrop-blur-xl transition-all duration-500 ${
             headerCompact
               ? "px-4 py-2 shadow-[0_14px_40px_rgba(2,8,23,0.46)]"
               : "px-5 py-3 shadow-[0_22px_70px_rgba(2,8,23,0.34)]"
@@ -315,14 +353,14 @@ function App() {
             onClick={() => scrollToSection("top")}
             className="flex items-center gap-3 text-left"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-300/10 text-sm font-semibold tracking-[0.28em] text-cyan-100">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#45D6FF]/25 bg-[#45D6FF]/10 text-sm font-semibold tracking-[0.28em] text-[#F3F6FB]">
               JZ
             </span>
             <span className="hidden sm:block">
-              <span className="block font-[Instrument_Serif] text-2xl italic tracking-[0.03em] text-white">
+              <span className="block font-[Instrument_Serif] text-[1.65rem] leading-none tracking-[0.02em] text-[#F3F6FB]">
                 Jiazuo Zhang
               </span>
-              <span className="block text-[10px] uppercase tracking-[0.34em] text-slate-400">
+              <span className="block text-[10px] uppercase tracking-[0.34em] text-[#AAB4C4]">
                 Software Engineer
               </span>
             </span>
@@ -334,7 +372,7 @@ function App() {
                 key={item.id}
                 type="button"
                 onClick={() => scrollToSection(item.id)}
-                className="rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-slate-300 transition duration-300 hover:bg-white/8 hover:text-white"
+                className="rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#AAB4C4] transition duration-300 hover:bg-white/8 hover:text-[#F3F6FB]"
               >
                 {item.label}
               </button>
@@ -345,7 +383,7 @@ function App() {
             href="/Resume_Jiazuo_Zhang.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-50 transition duration-300 hover:-translate-y-0.5 hover:bg-cyan-300/20"
+            className="inline-flex items-center gap-2 rounded-full border border-[#45D6FF]/25 bg-[#45D6FF]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#F3F6FB] transition duration-300 hover:-translate-y-0.5 hover:bg-[#45D6FF]/16"
           >
             <IconFile className="h-4 w-4" />
             Resume
@@ -354,99 +392,115 @@ function App() {
       </header>
 
       <main id="top" className="relative z-10">
-        <section className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pb-20 pt-32 sm:px-6 lg:px-8 lg:pb-28 lg:pt-36">
-          <div className="grid items-end gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <section
+          className="mx-auto flex min-h-[46rem] max-w-7xl flex-col justify-start px-4 pb-20 pt-24 sm:px-6 lg:min-h-[48rem] lg:px-8 lg:pb-16 lg:pt-28"
+          onPointerMove={handlePointerMove}
+          onPointerLeave={handlePointerLeave}
+        >
+          <div
+            className="cursor-glow pointer-events-none absolute z-[1] hidden md:block"
+            style={{
+              left: `${cursorGlow.x}px`,
+              top: `${cursorGlow.y}px`,
+            }}
+          />
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="js-reveal section-fade max-w-4xl">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.32em] text-slate-300 backdrop-blur">
-                <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(74,222,128,0.9)]" />
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-[#AAB4C4] backdrop-blur">
+                <span className="inline-flex h-2 w-2 rounded-full bg-[#45D6FF] shadow-[0_0_18px_rgba(69,214,255,0.85)]" />
                 Building AI automation and user-facing products
               </div>
 
-              <h1 className="mt-8 max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.9] tracking-tight text-white sm:text-7xl lg:text-[7.8rem]">
-                Product-minded engineering
-                <span className="block pl-[0.08em] text-cyan-200/95 italic">with motion, clarity, and systems thinking.</span>
+              <h1 className="mt-8 max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.92] tracking-tight text-[#F3F6FB] sm:text-7xl lg:text-[6.1rem]">
+                Jiazuo Zhang
               </h1>
 
-              <p className="mt-8 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                I design and ship full-stack experiences that feel alive: AI-assisted workflows, clean interfaces,
-                and product surfaces that make complex systems easier to trust and use.
-              </p>
+              <div className="mt-5 max-w-3xl">
+                <p className="font-[Instrument_Serif] text-[2.15rem] leading-[1.12] tracking-[0.01em] text-[#F3F6FB] sm:text-[2.6rem] lg:text-[3.15rem]">
+                  Software engineer building full-stack products and AI-driven systems.
+                </p>
+              </div>
 
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-7 flex flex-wrap gap-4">
                 <button
                   type="button"
                   onClick={() => scrollToSection("projects")}
-                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
+                  className="inline-flex items-center rounded-full bg-[#F3F6FB] px-6 py-3 text-sm font-semibold text-[#0C1220] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
                 >
-                  Explore Selected Work
+                  Explore Selected Works
                 </button>
                 <button
                   type="button"
                   onClick={() => scrollToSection("contact")}
-                  className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/10"
+                  className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/10"
                 >
-                  Start a Conversation
+                  Get In Touch
                 </button>
               </div>
             </div>
 
             <div className="js-reveal section-fade relative lg:justify-self-end">
-              <div className="hero-orbit rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_30px_120px_rgba(8,15,30,0.6)] backdrop-blur-xl sm:p-7">
-                <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-slate-950/70 p-6">
-                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.32em] text-slate-400">
-                    <span>Current Focus</span>
-                    <span>2026</span>
-                  </div>
-
-                  <div className="mt-8 space-y-5">
-                    {metrics.map((metric, index) => (
-                      <div
-                        key={metric.label}
-                        className="rounded-[1.4rem] border border-white/10 bg-white/[0.04] p-4"
-                        style={{ animationDelay: `${index * 120}ms` }}
-                      >
-                        <div className="text-[10px] uppercase tracking-[0.28em] text-slate-400">{metric.label}</div>
-                        <div className="mt-2 text-2xl font-semibold text-white">{metric.value}</div>
+              <div className="space-y-5 sm:space-y-6">
+                {metrics.map((metric, index) => (
+                  <div
+                    key={metric.label}
+                    className="rounded-[1.4rem] border border-[#45D6FF]/20 bg-[rgba(20,28,43,0.96)] p-5 shadow-[0_16px_40px_rgba(8,15,30,0.28)]"
+                    style={{ animationDelay: `${index * 120}ms` }}
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.28em] text-[#AAB4C4]">{metric.label}</div>
+                    {metric.value ? (
+                      <div className="mt-2 text-lg font-semibold leading-7 text-[#F3F6FB] sm:text-[1.35rem]">
+                        {metric.value}
                       </div>
-                    ))}
+                    ) : null}
+                    {metric.items ? (
+                      <div className="mt-4 flex flex-wrap gap-2.5">
+                        {metric.items.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded-full border border-[#45D6FF]/20 bg-[#101827] px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-[#F3F6FB]"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
+                ))}
 
-                  <div className="mt-8 rounded-[1.4rem] border border-cyan-300/15 bg-gradient-to-br from-cyan-300/15 via-white/5 to-fuchsia-300/10 p-5">
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-cyan-100/70">Snapshot</div>
-                    <p className="mt-3 max-w-sm text-sm leading-7 text-slate-200">
-                      MSCS at Northeastern, with prior consulting experience and a steady focus on turning technical
-                      systems into clear, user-facing products.
-                    </p>
-                  </div>
+                <div className="rounded-[1.4rem] border border-[#45D6FF]/20 bg-[rgba(20,28,43,0.96)] p-5 shadow-[0_16px_40px_rgba(8,15,30,0.28)]">
+                  <div className="text-[10px] uppercase tracking-[0.28em] text-[#AAB4C4]">Education</div>
+                  <p className="mt-3 max-w-sm text-lg font-semibold leading-7 text-[#F3F6FB] sm:text-[1.35rem]">
+                    MSCS at Northeastern University
+                  </p>
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute -left-10 top-12 hidden h-28 w-28 rounded-full border border-cyan-300/20 bg-cyan-300/10 blur-3xl lg:block" />
-              <div className="pointer-events-none absolute -bottom-10 right-8 hidden h-24 w-24 rounded-full border border-fuchsia-300/20 bg-fuchsia-300/10 blur-3xl lg:block" />
+              <div className="pointer-events-none absolute -left-10 top-12 hidden h-28 w-28 rounded-full border border-[#45D6FF]/20 bg-[#45D6FF]/10 blur-3xl lg:block" />
+              <div className="pointer-events-none absolute -bottom-10 right-8 hidden h-24 w-24 rounded-full border border-[#6F7CFF]/20 bg-[#6F7CFF]/10 blur-3xl lg:block" />
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8" id="projects">
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" id="projects">
           <div className="js-reveal section-fade mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <div className="text-[11px] uppercase tracking-[0.34em] text-cyan-200/80">Selected Projects</div>
-              <h2 className="mt-4 font-[Instrument_Serif] text-4xl italic text-white sm:text-5xl">
+              <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Selected Projects</div>
+              <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
                 A coverflow-style reel of systems I have shipped.
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-slate-400 sm:text-base">
+            <p className="max-w-xl text-sm leading-7 text-[#AAB4C4] sm:text-base">
               This section uses native JavaScript to track scroll position, determine the active card, and apply 3D
               transforms so the center project feels pinned while surrounding work falls away in depth.
             </p>
           </div>
 
-          <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-white/[0.04] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">
-            <div
-              ref={carouselRef}
-              onWheel={handleCarouselWheel}
-              className="coverflow-track flex gap-6 overflow-x-auto px-5 pb-4 pt-6 sm:px-8"
-            >
+          <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-[#101827] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">
+              <div
+                ref={carouselRef}
+                className="coverflow-track flex gap-6 overflow-x-auto px-5 pb-4 pt-6 sm:px-8"
+              >
               {projects.map((project, index) => {
                 const distance = index - activeIndex;
                 const absDistance = Math.abs(distance);
@@ -461,8 +515,8 @@ function App() {
                     key={project.title}
                     data-card
                     onClick={() => centerCard(index)}
-                    className={`project-shell relative h-[34rem] w-[82vw] max-w-[26rem] shrink-0 cursor-pointer snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/80 transition-all duration-500 md:w-[26rem] ${
-                      index === activeIndex ? "ring-1 ring-cyan-200/35" : ""
+                    className={`project-shell relative h-[34rem] w-[82vw] max-w-[26rem] shrink-0 cursor-pointer snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#141C2B_0%,#12192A_100%)] transition-all duration-500 md:w-[26rem] ${
+                      index === activeIndex ? "ring-1 ring-[#45D6FF]/35" : ""
                     }`}
                     style={{
                       transform: `translate3d(${translateX}px, ${translateY}px, 0) rotateY(${rotateY}deg) scale(${scale})`,
@@ -470,8 +524,8 @@ function App() {
                       zIndex: projects.length - absDistance,
                     }}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} opacity-20`} />
-                    <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/12 to-transparent" />
+                    <div className="absolute inset-0 bg-[#141C2B]" />
+                    <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/8 to-transparent" />
                     <div className="relative flex h-full flex-col p-5 sm:p-6">
                       <div className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/20">
                         <img
@@ -481,15 +535,15 @@ function App() {
                         />
                       </div>
 
-                      <div className="mt-5 text-[10px] uppercase tracking-[0.3em] text-slate-300/70">{project.eyebrow}</div>
-                      <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">{project.title}</h3>
-                      <p className="mt-4 text-sm leading-7 text-slate-300">{project.description}</p>
+                      <div className="mt-5 text-[10px] uppercase tracking-[0.3em] text-[#AAB4C4]/75">{project.eyebrow}</div>
+                      <h3 className="mt-3 text-2xl font-semibold leading-tight text-[#F3F6FB]">{project.title}</h3>
+                      <p className="mt-4 text-sm leading-7 text-[#AAB4C4]">{project.description}</p>
 
                       <div className="mt-5 flex flex-wrap gap-2">
                         {project.stack.map((item) => (
                           <span
                             key={item}
-                            className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-slate-200"
+                            className="rounded-full border border-white/10 bg-white/[0.06] px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-[#AAB4C4]"
                           >
                             {item}
                           </span>
@@ -503,7 +557,7 @@ function App() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(event) => event.stopPropagation()}
-                            className="inline-flex items-center rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950 transition duration-300 hover:-translate-y-0.5"
+                            className="inline-flex items-center rounded-full bg-[#F3F6FB] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#0C1220] transition duration-300 hover:-translate-y-0.5"
                           >
                             Live
                           </a>
@@ -514,7 +568,7 @@ function App() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(event) => event.stopPropagation()}
-                            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.1]"
+                            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#F3F6FB] transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.1]"
                           >
                             GitHub
                           </a>
@@ -533,7 +587,7 @@ function App() {
                   type="button"
                   onClick={() => centerCard(index)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? "w-10 bg-white" : "w-2.5 bg-white/25 hover:bg-white/45"
+                    index === activeIndex ? "w-10 bg-[#45D6FF]" : "w-2.5 bg-white/25 hover:bg-white/45"
                   }`}
                   aria-label={`Focus ${project.title}`}
                 />
@@ -545,11 +599,11 @@ function App() {
         <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8" id="strengths">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div className="js-reveal section-fade max-w-xl">
-              <div className="text-[11px] uppercase tracking-[0.34em] text-cyan-200/80">Strengths</div>
-              <h2 className="mt-4 font-[Instrument_Serif] text-4xl italic text-white sm:text-5xl">
+              <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Strengths</div>
+              <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
                 What I tend to bring into a product team.
               </h2>
-              <p className="mt-6 text-base leading-8 text-slate-300">
+              <p className="mt-6 text-base leading-8 text-[#AAB4C4]">
                 I like work that sits between engineering depth and product clarity: systems that need solid foundations,
                 but also need to feel intuitive, fast, and easy to explain.
               </p>
@@ -559,15 +613,15 @@ function App() {
               {skillGroups.map((group, index) => (
                 <article
                   key={group.title}
-                  className="js-reveal section-fade rounded-[1.8rem] border border-white/10 bg-white/[0.045] p-6 backdrop-blur"
+                  className="js-reveal section-fade rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur"
                   style={{ transitionDelay: `${index * 80}ms` }}
                 >
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-slate-400">{group.title}</div>
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-[#C8D1DE]">{group.title}</div>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-cyan-200/10 bg-slate-950/70 px-3 py-1.5 text-xs font-medium text-slate-100"
+                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-[#D8E0EB]"
                       >
                         {item}
                       </span>
@@ -579,15 +633,13 @@ function App() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" id="journey">
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" id="experience">
           <div className="js-reveal section-fade mb-10 max-w-2xl">
-            <div className="text-[11px] uppercase tracking-[0.34em] text-cyan-200/80">Journey</div>
-            <h2 className="mt-4 font-[Instrument_Serif] text-4xl italic text-white sm:text-5xl">
-              Experience and education arranged like a running timeline.
-            </h2>
+            <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Experience</div>
+            <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">Experience and Education</h2>
           </div>
 
-          <div className="relative space-y-5 before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-cyan-200/0 before:via-cyan-200/40 before:to-cyan-200/0 md:before:left-1/2">
+          <div className="relative space-y-2 before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-[#45D6FF]/0 before:via-[#45D6FF]/40 before:to-[#45D6FF]/0 md:before:left-1/2">
             {timeline.map((item, index) => (
               <article
                 key={`${item.name}-${item.period}`}
@@ -596,19 +648,19 @@ function App() {
               >
                 <div className={`hidden md:block ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"}`} />
                 <div className={`relative ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
-                  <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-cyan-100/50 bg-cyan-200 shadow-[0_0_26px_rgba(165,243,252,0.85)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
-                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-white/[0.045] p-6 backdrop-blur md:ml-0">
+                  <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-[#45D6FF]/50 bg-[#45D6FF] shadow-[0_0_26px_rgba(69,214,255,0.7)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
+                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur md:ml-0">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-slate-950/80">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#101827]">
                         <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
                       </div>
                       <div>
-                        <div className="text-lg font-semibold text-white">{item.name}</div>
-                        <div className="text-xs uppercase tracking-[0.22em] text-slate-400">{item.period}</div>
+                        <div className="text-lg font-semibold text-[#F3F6FB]">{item.name}</div>
+                        <div className="text-xs uppercase tracking-[0.22em] text-[#AAB4C4]">{item.period}</div>
                       </div>
                     </div>
-                    <div className="mt-5 text-base font-medium text-slate-100">{item.title}</div>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">{item.detail}</p>
+                    <div className="mt-5 text-base font-medium text-[#F3F6FB]">{item.title}</div>
+                    <p className="mt-3 text-sm leading-7 text-[#AAB4C4]">{item.detail}</p>
                   </div>
                 </div>
               </article>
@@ -617,23 +669,22 @@ function App() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8" id="contact">
-          <div className="js-reveal section-fade rounded-[2.2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-6 py-10 shadow-[0_30px_100px_rgba(2,8,23,0.5)] backdrop-blur-xl sm:px-10 sm:py-12">
+          <div className="js-reveal section-fade rounded-[2.2rem] border border-white/10 bg-[#101827] px-6 py-10 shadow-[0_30px_100px_rgba(2,8,23,0.5)] backdrop-blur-xl sm:px-10 sm:py-12">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <div className="text-[11px] uppercase tracking-[0.34em] text-cyan-200/80">Contact</div>
-                <h2 className="mt-4 font-[Instrument_Serif] text-4xl italic text-white sm:text-5xl">
-                  If you are building something thoughtful, I would love to hear about it.
+                <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Contact</div>
+                <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
+                  Open to software engineering roles across front-end, full-stack, and AI-enabled product development.
                 </h2>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300">
-                  Open to software engineering roles, product-minded collaborations, and work that blends engineering
-                  rigor with a strong user experience point of view.
+                <p className="mt-6 max-w-2xl text-base leading-8 text-[#AAB4C4]">
+                  Reach me by email, GitHub, or LinkedIn.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3 lg:justify-end">
                 <a
                   href="mailto:jiazuozhang04@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition duration-300 hover:-translate-y-1"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#F3F6FB] px-5 py-3 text-sm font-semibold text-[#0C1220] transition duration-300 hover:-translate-y-1"
                 >
                   <IconMail className="h-4 w-4" />
                   Email
@@ -642,7 +693,7 @@ function App() {
                   href="https://github.com/jzzhang04"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
                 >
                   <IconGitHub className="h-4 w-4" />
                   GitHub
@@ -651,7 +702,7 @@ function App() {
                   href="https://linkedin.com/in/jiazuozhang"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
                 >
                   <IconLinkedIn className="h-4 w-4" />
                   LinkedIn

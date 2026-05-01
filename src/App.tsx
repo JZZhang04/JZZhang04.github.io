@@ -147,21 +147,20 @@ const skillGroups = [
 
 const timeline: TimelineItem[] = [
   {
+    logo: "/logos/blinkle.png",
+    alt: "Blinkle AI",
+    name: "Blinkle AI",
+    title: "Software Engineer Intern",
+    detail: "Built full-stack AI product workflows across React, Next.js, NestJS, AWS, PostgreSQL, and Stripe.",
+    period: "Boston · 2025 - 2026",
+  },
+  {
     logo: "/logos/neu.png",
     alt: "Northeastern University",
     name: "Northeastern University",
     title: "M.S. in Computer Science",
     detail: "Graduate work focused on software engineering, applied AI systems, and full-stack product development.",
     period: "Boston · 2024 - 2026",
-  },
-  {
-    logo: "/logos/blinkle.png",
-    alt: "Blinkle AI",
-    name: "Blinkle AI",
-    title: "Software Engineer Intern",
-    detail:
-      "Built full-stack AI product workflows with React, Next.js, NestJS, TypeScript, AWS Bedrock, SageMaker, PostgreSQL JSONB, and Stripe. Developed Chrome extension automation and backend-integrated LLM pipelines that improved data entry, resume generation, retrieval, payments, and environment isolation across production services.",
-    period: "Boston · 2025 - 2026",
   },
   {
     logo: "/logos/accenture.png",

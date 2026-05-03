@@ -151,7 +151,7 @@ const timeline: TimelineItem[] = [
     alt: "Blinkle AI",
     name: "Blinkle AI",
     title: "Software Engineer Intern",
-    detail: "Built full-stack AI product workflows across React, Next.js, NestJS, AWS, PostgreSQL, and Stripe.",
+    detail: "Built full-stack product workflows across React, Next.js, NestJS, AWS, PostgreSQL, and Stripe.",
     period: "Boston · 2025 - 2026",
   },
   {

@@ -489,10 +489,10 @@ function App() {
                 A coverflow-style reel of systems I have shipped.
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-7 text-[#AAB4C4] sm:text-base">
+            {/* <p className="max-w-xl text-sm leading-7 text-[#AAB4C4] sm:text-base">
               This section uses native JavaScript to track scroll position, determine the active card, and apply 3D
               transforms so the center project feels pinned while surrounding work falls away in depth.
-            </p>
+            </p> */}
           </div>
 
           <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-[#101827] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">

@@ -199,17 +199,10 @@ const navItems = [
 ];
 
 function App() {
-  const [headerCompact, setHeaderCompact] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState("top");
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [cursorGlow, setCursorGlow] = useState({ x: -240, y: -240 });
-
-  useEffect(() => {
-    const onScroll = () => setHeaderCompact(window.scrollY > 56);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".js-reveal"));
@@ -291,6 +284,21 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    navItems.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -317,25 +325,19 @@ function App() {
       <div className="pointer-events-none absolute inset-0 bg-[#0C1220]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[36rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.035),_transparent_62%)] opacity-80" />
 
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          headerCompact ? "px-3 py-3 sm:px-6" : "px-4 py-5 sm:px-8"
-        }`}
-      >
-        <div
-          className={`mx-auto flex max-w-7xl items-center justify-center rounded-full border border-white/10 bg-[rgba(12,18,32,0.72)] backdrop-blur-xl transition-all duration-500 ${
-            headerCompact
-              ? "px-4 py-2 shadow-[0_14px_40px_rgba(2,8,23,0.46)]"
-              : "px-5 py-3 shadow-[0_22px_70px_rgba(2,8,23,0.34)]"
-          }`}
-        >
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[rgba(12,18,32,0.82)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3 sm:px-8">
           <nav className="flex items-center gap-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => scrollToSection(item.id)}
-                className="rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#AAB4C4] transition duration-300 hover:bg-white/8 hover:text-[#F3F6FB]"
+                className={`rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] transition duration-300 ${
+                  activeSection === item.id
+                    ? "bg-white/8 text-[#F3F6FB]"
+                    : "text-[#AAB4C4] hover:bg-white/8 hover:text-[#F3F6FB]"
+                }`}
               >
                 {item.label}
               </button>

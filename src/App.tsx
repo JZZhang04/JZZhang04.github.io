@@ -153,7 +153,7 @@ const timeline: TimelineItem[] = [
     alt: "Northeastern University",
     name: "Northeastern University",
     title: "M.S. in Computer Science",
-    detail: "Graduate work focused on software engineering, applied AI systems, and full-stack product development.",
+    detail: "Graduate work focused on software engineering, algorithms and data structures, and full-stack product development.",
     period: "Boston · 2024 - 2026",
   },
   {

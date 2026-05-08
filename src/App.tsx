@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import "./App.css";
 
 type IconProps = { className?: string };
@@ -20,12 +20,6 @@ type TimelineItem = {
   title: string;
   detail: string;
   period: string;
-};
-
-type Metric = {
-  label: string;
-  value?: string;
-  items?: string[];
 };
 
 function IconFile({ className }: IconProps) {
@@ -198,10 +192,10 @@ const timeline: TimelineItem[] = [
 ];
 
 const navItems = [
-  { label: "Projects", id: "projects" },
+  { label: "About", id: "top" },
   { label: "Strengths", id: "strengths" },
   { label: "Experience", id: "experience" },
-  { label: "Contact", id: "contact" },
+  { label: "Projects", id: "projects" },
 ];
 
 function App() {
@@ -209,18 +203,6 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [cursorGlow, setCursorGlow] = useState({ x: -240, y: -240 });
-
-  const metrics = useMemo<Metric[]>(
-    () => [
-      { label: "Current Role", value: "Software Engineering Intern at Blinkle AI" },
-      { label: "Primary Focus", value: "Full-Stack Engineering · AI-Powered Applications" },
-      {
-        label: "Most Used Stack",
-        items: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-      },
-    ],
-    [],
-  );
 
   useEffect(() => {
     const onScroll = () => setHeaderCompact(window.scrollY > 56);
@@ -341,31 +323,13 @@ function App() {
         }`}
       >
         <div
-          className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-[rgba(12,18,32,0.72)] backdrop-blur-xl transition-all duration-500 ${
+          className={`mx-auto flex max-w-7xl items-center justify-center rounded-full border border-white/10 bg-[rgba(12,18,32,0.72)] backdrop-blur-xl transition-all duration-500 ${
             headerCompact
               ? "px-4 py-2 shadow-[0_14px_40px_rgba(2,8,23,0.46)]"
               : "px-5 py-3 shadow-[0_22px_70px_rgba(2,8,23,0.34)]"
           }`}
         >
-          <button
-            type="button"
-            onClick={() => scrollToSection("top")}
-            className="flex items-center gap-3 text-left"
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#45D6FF]/25 bg-[#45D6FF]/10 text-sm font-semibold tracking-[0.28em] text-[#F3F6FB]">
-              JZ
-            </span>
-            <span className="hidden sm:block">
-              <span className="block font-[Instrument_Serif] text-[1.65rem] leading-none tracking-[0.02em] text-[#F3F6FB]">
-                Jiazuo Zhang
-              </span>
-              <span className="block text-[10px] uppercase tracking-[0.34em] text-[#AAB4C4]">
-                Software Engineer
-              </span>
-            </span>
-          </button>
-
-          <nav className="hidden items-center gap-2 md:flex">
+          <nav className="flex items-center gap-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -377,22 +341,12 @@ function App() {
               </button>
             ))}
           </nav>
-
-          <a
-            href="/Resume_Jiazuo_Zhang.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[#45D6FF]/25 bg-[#45D6FF]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#F3F6FB] transition duration-300 hover:-translate-y-0.5 hover:bg-[#45D6FF]/16"
-          >
-            <IconFile className="h-4 w-4" />
-            Resume
-          </a>
         </div>
       </header>
 
       <main id="top" className="relative z-10">
         <section
-          className="mx-auto flex min-h-[46rem] max-w-7xl flex-col justify-start px-4 pb-20 pt-24 sm:px-6 lg:min-h-[48rem] lg:px-8 lg:pb-16 lg:pt-28"
+          className="mx-auto flex max-w-7xl flex-col justify-start px-4 pb-28 pt-24 sm:px-6 lg:px-8 lg:pb-24 lg:pt-28"
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
         >
@@ -403,85 +357,136 @@ function App() {
               top: `${cursorGlow.y}px`,
             }}
           />
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_12rem] lg:items-end">
             <div className="js-reveal section-fade max-w-4xl">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-[#AAB4C4] backdrop-blur">
-                <span className="inline-flex h-2 w-2 rounded-full bg-[#45D6FF] shadow-[0_0_18px_rgba(69,214,255,0.85)]" />
-                Building AI automation and user-facing products
-              </div>
-
-              <h1 className="mt-8 max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.92] tracking-tight text-[#F3F6FB] sm:text-7xl lg:text-[6.1rem]">
+              <h1 className="max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.92] tracking-tight text-[#F3F6FB] sm:text-7xl lg:text-[6.1rem]">
                 Jiazuo Zhang
               </h1>
 
               <div className="mt-5 max-w-3xl">
-                <p className="font-[Instrument_Serif] text-[2.15rem] leading-[1.12] tracking-[0.01em] text-[#F3F6FB] sm:text-[2.6rem] lg:text-[3.15rem]">
+                <p className="font-[Instrument_Serif] text-[2.15rem] leading-[1.12] tracking-[0.01em] text-[#45D6FF] sm:text-[2.6rem] lg:text-[3.15rem]">
                   Software engineer building full-stack products and AI-driven systems.
                 </p>
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-4">
-                <button
-                  type="button"
-                  onClick={() => scrollToSection("projects")}
-                  className="inline-flex items-center rounded-full bg-[#F3F6FB] px-6 py-3 text-sm font-semibold text-[#0C1220] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
-                >
-                  Explore Selected Works
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollToSection("contact")}
-                  className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/10"
-                >
-                  Get In Touch
-                </button>
-              </div>
+              <p className="mt-7 max-w-3xl text-base leading-8 text-[#AAB4C4] sm:text-lg">
+                Open to software engineering roles across front-end, full-stack, and AI-enabled product development.
+              </p>
             </div>
 
-            <div className="js-reveal section-fade relative lg:justify-self-end">
-              <div className="space-y-5 sm:space-y-6">
-                {metrics.map((metric, index) => (
-                  <div
-                    key={metric.label}
-                    className="rounded-[1.4rem] border border-[#45D6FF]/20 bg-[rgba(20,28,43,0.96)] p-5 shadow-[0_16px_40px_rgba(8,15,30,0.28)]"
-                    style={{ animationDelay: `${index * 120}ms` }}
-                  >
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-[#AAB4C4]">{metric.label}</div>
-                    {metric.value ? (
-                      <div className="mt-2 text-lg font-semibold leading-7 text-[#F3F6FB] sm:text-[1.35rem]">
-                        {metric.value}
-                      </div>
-                    ) : null}
-                    {metric.items ? (
-                      <div className="mt-4 flex flex-wrap gap-2.5">
-                        {metric.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-[#45D6FF]/20 bg-[#101827] px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-[#F3F6FB]"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-
-                <div className="rounded-[1.4rem] border border-[#45D6FF]/20 bg-[rgba(20,28,43,0.96)] p-5 shadow-[0_16px_40px_rgba(8,15,30,0.28)]">
-                  <div className="text-[10px] uppercase tracking-[0.28em] text-[#AAB4C4]">Education</div>
-                  <p className="mt-3 max-w-sm text-lg font-semibold leading-7 text-[#F3F6FB] sm:text-[1.35rem]">
-                    MSCS at Northeastern University
-                  </p>
-                </div>
-              </div>
-
-              <div className="pointer-events-none absolute -left-10 top-12 hidden h-28 w-28 rounded-full border border-[#45D6FF]/20 bg-[#45D6FF]/10 blur-3xl lg:block" />
-              <div className="pointer-events-none absolute -bottom-10 right-8 hidden h-24 w-24 rounded-full border border-[#6F7CFF]/20 bg-[#6F7CFF]/10 blur-3xl lg:block" />
+            <div className="js-reveal section-fade flex flex-wrap gap-3 lg:flex-col lg:items-stretch lg:justify-end">
+              <a
+                href="/Resume_Jiazuo_Zhang.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-start gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:border-[#F3F6FB] hover:bg-[#F3F6FB] hover:text-[#0C1220] hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
+              >
+                <IconFile className="h-4 w-4" />
+                Resume
+              </a>
+              <a
+                href="mailto:jiazuozhang04@gmail.com"
+                className="inline-flex items-center justify-start gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:border-[#F3F6FB] hover:bg-[#F3F6FB] hover:text-[#0C1220] hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
+              >
+                <IconMail className="h-4 w-4" />
+                Email
+              </a>
+              <a
+                href="https://github.com/jzzhang04"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-start gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:border-[#F3F6FB] hover:bg-[#F3F6FB] hover:text-[#0C1220] hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
+              >
+                <IconGitHub className="h-4 w-4" />
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/jiazuozhang"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-start gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-3 text-left text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:border-[#F3F6FB] hover:bg-[#F3F6FB] hover:text-[#0C1220] hover:shadow-[0_18px_50px_rgba(255,255,255,0.18)]"
+              >
+                <IconLinkedIn className="h-4 w-4" />
+                LinkedIn
+              </a>
             </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8" id="projects">
+        <section className="mx-auto max-w-7xl px-4 pb-24 pt-20 sm:px-6 lg:px-8" id="strengths">
+          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div className="js-reveal section-fade max-w-xl">
+              <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Strengths</div>
+              <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
+                What I tend to bring into a product team.
+              </h2>
+              <p className="mt-6 text-base leading-8 text-[#AAB4C4]">
+                I have worked with React, TypeScript, Next.js, NestJS, PostgreSQL, AWS, and Stripe to develop production
+                features across frontend workflows, backend APIs, data modeling, payment systems, and deployment
+                environments.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {skillGroups.map((group, index) => (
+                <article
+                  key={group.title}
+                  className="js-reveal section-fade rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur"
+                  style={{ transitionDelay: `${index * 80}ms` }}
+                >
+                  <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C8D1DE]">{group.title}</div>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-medium text-[#D8E0EB]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" id="experience">
+          <div className="js-reveal section-fade mb-10 max-w-2xl">
+            <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Experience</div>
+            <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">Experience and Education</h2>
+          </div>
+
+          <div className="relative space-y-2 before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-[#45D6FF]/0 before:via-[#45D6FF]/40 before:to-[#45D6FF]/0 md:before:left-1/2">
+            {timeline.map((item, index) => (
+              <article
+                key={`${item.name}-${item.period}`}
+                className={`js-reveal section-fade relative grid gap-4 md:grid-cols-2 ${index % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"}`}
+                style={{ transitionDelay: `${index * 90}ms` }}
+              >
+                <div className={`hidden md:block ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"}`} />
+                <div className={`relative ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
+                  <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-[#45D6FF]/50 bg-[#45D6FF] shadow-[0_0_26px_rgba(69,214,255,0.7)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
+                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur md:ml-0">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#101827]">
+                        <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
+                      </div>
+                      <div>
+                        <div className="text-lg font-semibold text-[#F3F6FB]">{item.name}</div>
+                        <div className="text-xs uppercase tracking-[0.22em] text-[#AAB4C4]">{item.period}</div>
+                      </div>
+                    </div>
+                    <div className="mt-5 text-base font-medium text-[#F3F6FB]">{item.title}</div>
+                    <p className="mt-3 text-sm leading-7 text-[#AAB4C4]">{item.detail}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8" id="projects">
           <div className="js-reveal section-fade mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Selected Projects</div>
@@ -489,17 +494,10 @@ function App() {
                 A coverflow-style reel of systems I have shipped.
               </h2>
             </div>
-            {/* <p className="max-w-xl text-sm leading-7 text-[#AAB4C4] sm:text-base">
-              This section uses native JavaScript to track scroll position, determine the active card, and apply 3D
-              transforms so the center project feels pinned while surrounding work falls away in depth.
-            </p> */}
           </div>
 
           <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-[#101827] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">
-              <div
-                ref={carouselRef}
-                className="coverflow-track flex gap-6 overflow-x-auto px-5 pb-4 pt-6 sm:px-8"
-              >
+            <div ref={carouselRef} className="coverflow-track flex gap-6 overflow-x-auto px-5 pb-4 pt-6 sm:px-8">
               {projects.map((project, index) => {
                 const distance = index - activeIndex;
                 const absDistance = Math.abs(distance);
@@ -591,122 +589,6 @@ function App() {
                   aria-label={`Focus ${project.title}`}
                 />
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8" id="strengths">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div className="js-reveal section-fade max-w-xl">
-              <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Strengths</div>
-              <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
-                What I tend to bring into a product team.
-              </h2>
-              <p className="mt-6 text-base leading-8 text-[#AAB4C4]">
-                I like work that sits between engineering depth and product clarity: systems that need solid foundations,
-                but also need to feel intuitive, fast, and easy to explain.
-              </p>
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              {skillGroups.map((group, index) => (
-                <article
-                  key={group.title}
-                  className="js-reveal section-fade rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur"
-                  style={{ transitionDelay: `${index * 80}ms` }}
-                >
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-[#C8D1DE]">{group.title}</div>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-[#D8E0EB]"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8" id="experience">
-          <div className="js-reveal section-fade mb-10 max-w-2xl">
-            <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Experience</div>
-            <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">Experience and Education</h2>
-          </div>
-
-          <div className="relative space-y-2 before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-[#45D6FF]/0 before:via-[#45D6FF]/40 before:to-[#45D6FF]/0 md:before:left-1/2">
-            {timeline.map((item, index) => (
-              <article
-                key={`${item.name}-${item.period}`}
-                className={`js-reveal section-fade relative grid gap-4 md:grid-cols-2 ${index % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"}`}
-                style={{ transitionDelay: `${index * 90}ms` }}
-              >
-                <div className={`hidden md:block ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"}`} />
-                <div className={`relative ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
-                  <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-[#45D6FF]/50 bg-[#45D6FF] shadow-[0_0_26px_rgba(69,214,255,0.7)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
-                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur md:ml-0">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#101827]">
-                        <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
-                      </div>
-                      <div>
-                        <div className="text-lg font-semibold text-[#F3F6FB]">{item.name}</div>
-                        <div className="text-xs uppercase tracking-[0.22em] text-[#AAB4C4]">{item.period}</div>
-                      </div>
-                    </div>
-                    <div className="mt-5 text-base font-medium text-[#F3F6FB]">{item.title}</div>
-                    <p className="mt-3 text-sm leading-7 text-[#AAB4C4]">{item.detail}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8" id="contact">
-          <div className="js-reveal section-fade rounded-[2.2rem] border border-white/10 bg-[#101827] px-6 py-10 shadow-[0_30px_100px_rgba(2,8,23,0.5)] backdrop-blur-xl sm:px-10 sm:py-12">
-            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
-                <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Contact</div>
-                <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
-                  Open to software engineering roles across front-end, full-stack, and AI-enabled product development.
-                </h2>
-                <p className="mt-6 max-w-2xl text-base leading-8 text-[#AAB4C4]">
-                  Reach me by email, GitHub, or LinkedIn.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                <a
-                  href="mailto:jiazuozhang04@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#F3F6FB] px-5 py-3 text-sm font-semibold text-[#0C1220] transition duration-300 hover:-translate-y-1"
-                >
-                  <IconMail className="h-4 w-4" />
-                  Email
-                </a>
-                <a
-                  href="https://github.com/jzzhang04"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
-                >
-                  <IconGitHub className="h-4 w-4" />
-                  GitHub
-                </a>
-                <a
-                  href="https://linkedin.com/in/jiazuozhang"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-[#F3F6FB] transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]"
-                >
-                  <IconLinkedIn className="h-4 w-4" />
-                  LinkedIn
-                </a>
-              </div>
             </div>
           </div>
         </section>

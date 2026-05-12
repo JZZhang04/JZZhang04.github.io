@@ -10,6 +10,7 @@ type Project = {
   image: string;
   live?: string;
   github?: string;
+  linksUnavailable?: boolean;
   eyebrow: string;
 };
 
@@ -117,6 +118,15 @@ const projects: Project[] = [
     image: "/kanbas1.png",
     live: "https://a6--kanbas-react-web-cs5610-fa24.netlify.app/#/Kanbas/Dashboard",
     github: "https://github.com/JZZhang04/Kanbas-front-end",
+  },
+  {
+    eyebrow: "GeoAI Guide",
+    title: "City Explorer with RAG",
+    description:
+      "A location-aware guided tour app that combines GIS, building data, and RAG to generate more grounded, place-specific AI responses.",
+    stack: ["React + TypeScript", "FastAPI + Python", "Mapbox GL JS", "RAG / LLM Architecture"],
+    image: "/location_rag.png",
+    linksUnavailable: true,
   },
 ];
 
@@ -550,7 +560,12 @@ function App() {
                       </div>
 
                       <div className="mt-auto flex gap-3 pt-6">
-                        {project.live ? (
+                        {project.linksUnavailable ? (
+                          <span className="inline-flex cursor-not-allowed items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#6F7A8A]">
+                            Coming Soon
+                          </span>
+                        ) : null}
+                        {!project.linksUnavailable && project.live ? (
                           <a
                             href={project.live}
                             target="_blank"
@@ -561,7 +576,7 @@ function App() {
                             Live
                           </a>
                         ) : null}
-                        {project.github ? (
+                        {!project.linksUnavailable && project.github ? (
                           <a
                             href={project.github}
                             target="_blank"

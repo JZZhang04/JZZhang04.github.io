@@ -1,4 +1,16 @@
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import {
+  Background,
+  BaseEdge,
+  Handle,
+  Position,
+  ReactFlow,
+  type Edge,
+  type EdgeProps,
+  type Node,
+  type NodeProps,
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
 import "./App.css";
 
 type IconProps = { className?: string };
@@ -22,6 +34,15 @@ type TimelineItem = {
   detail: string;
   period: string;
 };
+
+type SkillKind = "root" | "category" | "skill";
+
+type SkillNodeData = {
+  label: string;
+  kind: SkillKind;
+};
+
+type SkillNode = Node<SkillNodeData, "skillNode">;
 
 function IconFile({ className }: IconProps) {
   return (
@@ -149,6 +170,189 @@ const skillGroups = [
   },
 ];
 
+const skillNodeSizes: Record<SkillKind, { width: number; height: number }> = {
+  root: { width: 240, height: 70 },
+  category: { width: 190, height: 62 },
+  skill: { width: 104, height: 40 },
+};
+
+const skillTreeLayout = {
+  groupWidth: 240,
+  groupGap: 50,
+  skillColumnGap: 14,
+  skillRowGap: 58,
+  skillsPerRow: 2,
+  startX: 0,
+  startY: 0,
+  categoryY: 140,
+  skillY: 270,
+};
+
+function toNodeId(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function getSkillGraph() {
+  const nodes: SkillNode[] = [];
+  const edges: Edge[] = [];
+  const rootId = "product-engineering";
+  const rootSize = skillNodeSizes.root;
+  const categorySize = skillNodeSizes.category;
+  const skillSize = skillNodeSizes.skill;
+  const graphWidth =
+    skillGroups.length * skillTreeLayout.groupWidth + (skillGroups.length - 1) * skillTreeLayout.groupGap;
+
+  nodes.push({
+    id: rootId,
+    type: "skillNode",
+    data: { label: "Full-Stack Engineering", kind: "root" },
+    position: {
+      x: graphWidth / 2 - rootSize.width / 2,
+      y: skillTreeLayout.startY,
+    },
+    style: {
+      width: rootSize.width,
+      height: rootSize.height,
+    },
+    measured: {
+      width: rootSize.width,
+      height: rootSize.height,
+    },
+    sourcePosition: Position.Bottom,
+    targetPosition: Position.Top,
+  });
+
+  skillGroups.forEach((group, groupIndex) => {
+    const groupId = toNodeId(group.title);
+    const groupX = skillTreeLayout.startX + groupIndex * (skillTreeLayout.groupWidth + skillTreeLayout.groupGap);
+    const categoryX = groupX + skillTreeLayout.groupWidth / 2 - categorySize.width / 2;
+
+    nodes.push({
+      id: groupId,
+      type: "skillNode",
+      data: { label: group.title, kind: "category" },
+      position: { x: categoryX, y: skillTreeLayout.categoryY },
+      style: {
+        width: categorySize.width,
+        height: categorySize.height,
+      },
+      measured: {
+        width: categorySize.width,
+        height: categorySize.height,
+      },
+      sourcePosition: Position.Bottom,
+      targetPosition: Position.Top,
+    });
+    edges.push({
+      id: `${rootId}-${groupId}`,
+      source: rootId,
+      target: groupId,
+      type: "rootBranch",
+      className: "skill-graph-edge skill-graph-edge-primary",
+    });
+
+    group.items.forEach((item, itemIndex) => {
+      const itemId = `${groupId}-${toNodeId(item)}`;
+      const row = Math.floor(itemIndex / skillTreeLayout.skillsPerRow);
+      const column = itemIndex % skillTreeLayout.skillsPerRow;
+      const rowItemCount = Math.min(skillTreeLayout.skillsPerRow, group.items.length - row * skillTreeLayout.skillsPerRow);
+      const rowWidth = rowItemCount * skillSize.width + (rowItemCount - 1) * skillTreeLayout.skillColumnGap;
+      const skillX =
+        groupX +
+        skillTreeLayout.groupWidth / 2 -
+        rowWidth / 2 +
+        column * (skillSize.width + skillTreeLayout.skillColumnGap);
+
+      nodes.push({
+        id: itemId,
+        type: "skillNode",
+        data: { label: item, kind: "skill" },
+        position: {
+          x: skillX,
+          y: skillTreeLayout.skillY + row * skillTreeLayout.skillRowGap,
+        },
+        style: {
+          width: skillSize.width,
+          height: skillSize.height,
+        },
+        measured: {
+          width: skillSize.width,
+          height: skillSize.height,
+        },
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
+      });
+      edges.push({
+        id: `${groupId}-${itemId}`,
+        source: groupId,
+        target: itemId,
+        type: "skillCurve",
+        className: "skill-graph-edge",
+      });
+    });
+  });
+
+  return { nodes, edges };
+}
+
+function SkillGraphNode({ data }: NodeProps<SkillNode>) {
+  return (
+    <div className={`skill-graph-node skill-graph-node-${data.kind}`}>
+      {data.kind === "category" ? <Handle type="target" position={Position.Top} className="skill-graph-handle" /> : null}
+      {data.kind === "skill" ? <Handle type="target" position={Position.Top} className="skill-graph-handle" /> : null}
+      <span>{data.label}</span>
+      {data.kind === "root" ? <Handle type="source" position={Position.Bottom} className="skill-graph-handle" /> : null}
+      {data.kind === "category" ? <Handle type="source" position={Position.Bottom} className="skill-graph-handle" /> : null}
+    </div>
+  );
+}
+
+function SkillCurveEdge({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  markerEnd,
+  style,
+}: EdgeProps) {
+  const verticalDistance = Math.abs(targetY - sourceY);
+  const horizontalDistance = Math.abs(targetX - sourceX);
+  const radius = Math.max(58, Math.max(verticalDistance, horizontalDistance) * 0.36);
+  const edgePath =
+    horizontalDistance > verticalDistance
+      ? `M ${sourceX},${sourceY} C ${sourceX + radius},${sourceY} ${targetX - radius},${targetY} ${targetX},${targetY}`
+      : `M ${sourceX},${sourceY} C ${sourceX},${sourceY + radius} ${targetX},${targetY - radius} ${targetX},${targetY}`;
+
+  return <BaseEdge id={id} path={edgePath} markerEnd={markerEnd} style={style} />;
+}
+
+function RootBranchEdge({
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  markerEnd,
+  style,
+}: EdgeProps) {
+  const verticalDistance = Math.abs(targetY - sourceY);
+  const horizontalDistance = Math.abs(targetX - sourceX);
+  const radius = Math.max(38, Math.max(verticalDistance, horizontalDistance) * 0.22);
+  const edgePath = `M ${sourceX},${sourceY} C ${sourceX},${sourceY + radius} ${targetX},${targetY - radius} ${targetX},${targetY}`;
+
+  return <BaseEdge id={id} path={edgePath} markerEnd={markerEnd} style={style} />;
+}
+
+const skillNodeTypes = {
+  skillNode: SkillGraphNode,
+};
+
+const skillEdgeTypes = {
+  skillCurve: SkillCurveEdge,
+  rootBranch: RootBranchEdge,
+};
+
 const timeline: TimelineItem[] = [
   {
     logo: "/logos/blinkle.png",
@@ -213,6 +417,7 @@ function App() {
   const [activeSection, setActiveSection] = useState("top");
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [cursorGlow, setCursorGlow] = useState({ x: -240, y: -240 });
+  const skillGraph = useMemo(() => getSkillGraph(), []);
 
   useEffect(() => {
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".js-reveal"));
@@ -426,39 +631,44 @@ function App() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 pb-24 pt-20 sm:px-6 lg:px-8" id="strengths">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-            <div className="js-reveal section-fade max-w-xl">
-              <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Strengths</div>
-              <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
-                What I tend to bring into a product team.
-              </h2>
-              <p className="mt-6 text-base leading-8 text-[#AAB4C4]">
+          <div className="space-y-8">
+            <div className="js-reveal section-fade grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+              <div className="max-w-xl">
+                <div className="text-xs uppercase tracking-[0.34em] text-[#45D6FF]">Strengths</div>
+                <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">
+                  What I tend to bring into a product team.
+                </h2>
+              </div>
+              <p className="max-w-3xl text-base leading-8 text-[#AAB4C4] lg:justify-self-end">
                 I have worked with React, TypeScript, Next.js, NestJS, PostgreSQL, AWS, and Stripe to develop production
                 features across frontend workflows, backend APIs, data modeling, payment systems, and deployment
                 environments.
               </p>
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              {skillGroups.map((group, index) => (
-                <article
-                  key={group.title}
-                  className="js-reveal section-fade rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur"
-                  style={{ transitionDelay: `${index * 80}ms` }}
-                >
-                  <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C8D1DE]">{group.title}</div>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-sm font-medium text-[#D8E0EB]"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))}
+            <div className="js-reveal section-fade skill-graph-shell">
+              <ReactFlow
+                nodes={skillGraph.nodes}
+                edges={skillGraph.edges}
+                nodeTypes={skillNodeTypes}
+                edgeTypes={skillEdgeTypes}
+                className="skill-graph-flow"
+                fitView
+                fitViewOptions={{ padding: 0.08 }}
+                minZoom={0.65}
+                maxZoom={1}
+                nodesDraggable={false}
+                nodesConnectable={false}
+                elementsSelectable={false}
+                panOnDrag={false}
+                panOnScroll={false}
+                zoomOnScroll={false}
+                zoomOnPinch={false}
+                zoomOnDoubleClick={false}
+                proOptions={{ hideAttribution: true }}
+              >
+                <Background color="rgba(170, 180, 196, 0.18)" gap={22} size={1} />
+              </ReactFlow>
             </div>
           </div>
         </section>

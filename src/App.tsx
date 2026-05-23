@@ -574,7 +574,7 @@ function App() {
               top: `${cursorGlow.y}px`,
             }}
           />
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_12rem] lg:items-end">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_9.6rem] lg:items-end">
             <div className="js-reveal section-fade max-w-4xl">
               <h1 className="max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.92] tracking-tight text-[#F3F6FB] sm:text-7xl lg:text-[6.1rem]">
                 Jiazuo Zhang

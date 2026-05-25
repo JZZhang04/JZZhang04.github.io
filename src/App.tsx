@@ -587,7 +587,7 @@ function App() {
               </div>
 
               <p className="mt-7 max-w-3xl text-base leading-8 text-[#AAB4C4] sm:text-lg">
-                Open to software engineering roles across front-end, full-stack, and AI-enabled product development.
+                Open to software engineering roles across full-stack and AI-enabled product development.
               </p>
             </div>
 

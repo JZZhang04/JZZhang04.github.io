@@ -2,7 +2,7 @@
 
 :root {
   color: #f3f6fb;
-  background: #0c1220;
+  background: #120f17;
   font-family: "Manrope", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,7 +22,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #0c1220;
+  background: #120f17;
 }
 
 body,

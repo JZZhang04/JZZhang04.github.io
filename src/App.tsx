@@ -12,6 +12,7 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import "./App.css";
+import ParticleText from "./components/ParticleText";
 
 type IconProps = { className?: string };
 
@@ -536,11 +537,11 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-x-clip bg-[#0C1220] text-[#F3F6FB] selection:bg-[#45D6FF]/30 selection:text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[#0C1220]" />
+    <div className="relative min-h-screen overflow-x-clip bg-[#120F17] text-[#F3F6FB] selection:bg-[#45D6FF]/30 selection:text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[#120F17]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[36rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.035),_transparent_62%)] opacity-80" />
 
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[rgba(12,18,32,0.82)] backdrop-blur-xl">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[rgba(18,15,23,0.82)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-center px-4 py-3 sm:px-8">
           <nav className="flex items-center gap-2">
             {navItems.map((item) => (
@@ -576,14 +577,45 @@ function App() {
           />
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_9.6rem] lg:items-end">
             <div className="js-reveal section-fade max-w-4xl">
-              <h1 className="max-w-5xl font-[Instrument_Serif] text-6xl leading-[0.92] tracking-tight text-[#F3F6FB] sm:text-7xl lg:text-[6.1rem]">
-                Jiazuo Zhang
-              </h1>
+              <ParticleText
+                as="h1"
+                text="Jiazuo Zhang"
+                className="hero-particle-name"
+                density={2}
+                fontWeight={500}
+                fontSize="1em"
+                fontFamily='"Manrope", sans-serif'
+                color="#F3F6FB"
+                highlightColor="#F3F6FB"
+                particleSize={1.8}
+                scatter={45}
+                gatherDuration={1400}
+                stagger={180}
+                idleDrift={0}
+                pointerRepel={12}
+                repelRadius={65}
+                glow={false}
+              />
 
               <div className="mt-5 max-w-3xl">
-                <p className="font-[Instrument_Serif] text-[2.15rem] leading-[1.12] tracking-[0.01em] text-[#45D6FF] sm:text-[2.6rem] lg:text-[3.15rem]">
-                  Software engineer building full-stack products and AI-driven systems.
-                </p>
+                <ParticleText
+                  text="Software engineer building full-stack products and AI-driven systems."
+                  className="hero-particle-text"
+                  density={2}
+                  fontWeight={500}
+                  fontSize="1em"
+                  fontFamily='"Manrope", sans-serif'
+                  color="#45D6FF"
+                  highlightColor="#45D6FF"
+                  particleSize={1.8}
+                  scatter={45}
+                  gatherDuration={1400}
+                  stagger={180}
+                  idleDrift={0}
+                  pointerRepel={12}
+                  repelRadius={65}
+                  glow={false}
+                />
               </div>
 
               <p className="mt-7 max-w-3xl text-base leading-8 text-[#AAB4C4] sm:text-lg">
@@ -689,9 +721,9 @@ function App() {
                 <div className={`hidden md:block ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"}`} />
                 <div className={`relative ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
                   <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-[#45D6FF]/50 bg-[#45D6FF] shadow-[0_0_26px_rgba(69,214,255,0.7)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
-                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#141C2B] p-6 backdrop-blur md:ml-0">
+                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#120F17] p-6 backdrop-blur md:ml-0">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#101827]">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#120F17]">
                         <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
                       </div>
                       <div>
@@ -718,7 +750,7 @@ function App() {
             </div>
           </div>
 
-          <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-[#101827] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">
+          <div className="js-reveal section-fade coverflow-shell rounded-[2rem] border border-white/10 bg-[#120F17] px-0 py-8 shadow-[0_30px_80px_rgba(2,8,23,0.45)] backdrop-blur-xl sm:px-2">
             <div ref={carouselRef} className="coverflow-track flex gap-6 overflow-x-auto px-5 pb-4 pt-6 sm:px-8">
               {projects.map((project, index) => {
                 const distance = index - activeIndex;
@@ -734,7 +766,7 @@ function App() {
                     key={project.title}
                     data-card
                     onClick={() => centerCard(index)}
-                    className={`project-shell relative h-[34rem] w-[82vw] max-w-[26rem] shrink-0 cursor-pointer snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,#141C2B_0%,#12192A_100%)] transition-all duration-500 md:w-[26rem] ${
+                    className={`project-shell relative h-[34rem] w-[82vw] max-w-[26rem] shrink-0 cursor-pointer snap-center overflow-hidden rounded-[2rem] border border-white/10 bg-[#120F17] transition-all duration-500 md:w-[26rem] ${
                       index === activeIndex ? "ring-1 ring-[#45D6FF]/35" : ""
                     }`}
                     style={{
@@ -743,10 +775,9 @@ function App() {
                       zIndex: projects.length - absDistance,
                     }}
                   >
-                    <div className="absolute inset-0 bg-[#141C2B]" />
-                    <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/8 to-transparent" />
+                    <div className="absolute inset-0 bg-[#120F17]" />
                     <div className="relative flex h-full flex-col p-5 sm:p-6">
-                      <div className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-black/20">
+                      <div className="overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#120F17]">
                         <img
                           src={project.image}
                           alt={project.title}

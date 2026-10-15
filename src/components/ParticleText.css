@@ -1,0 +1,52 @@
+.particle-text {
+  position: relative;
+  width: 100%;
+}
+.hero-particle-text {
+  color: #45d6ff;
+  font-family: "Manrope", sans-serif;
+  font-size: 2.15rem;
+  font-weight: 500;
+  line-height: 1.12;
+}
+.particle-text__fallback {
+  display: block;
+}
+.particle-text__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+}
+.particle-text[data-ready="true"] .particle-text__canvas {
+  opacity: 1;
+}
+.particle-text[data-ready="true"] .particle-text__fallback {
+  opacity: 0;
+}
+@media (min-width: 640px) {
+  .hero-particle-text { font-size: 2.6rem; }
+}
+@media (min-width: 1024px) {
+  .hero-particle-text { font-size: 3.15rem; }
+}
+@media (max-width: 639px), (prefers-reduced-motion: reduce) {
+  .particle-text .particle-text__canvas { display: none; }
+  .particle-text[data-ready="true"] .particle-text__fallback { opacity: 1; }
+}
+
+.hero-particle-name {
+  margin: 0;
+  max-width: 64rem;
+  color: #f3f6fb;
+  font-family: "Manrope", sans-serif;
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 0.92;
+}
+@media (min-width: 640px) {
+  .hero-particle-name { font-size: 4.5rem; }
+}
+@media (min-width: 1024px) {
+  .hero-particle-name { font-size: 6.1rem; }
+}

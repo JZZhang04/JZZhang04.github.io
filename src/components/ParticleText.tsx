@@ -128,7 +128,7 @@ const ParticleText = ({
     const canvas = canvasRef.current;
     if (!container || !canvas) return undefined;
 
-    const staticQuery = window.matchMedia('(max-width: 639px), (prefers-reduced-motion: reduce)');
+    const staticQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const ctx = canvas.getContext('2d');
     if (!ctx) return undefined;
 
@@ -202,6 +202,7 @@ const ParticleText = ({
       pointer.smoothY += (pointer.y - pointer.smoothY) * 0.18;
 
       let complete = true;
+      let settling = false;
 
       particles.forEach(particle => {
         let baseX = particle.targetX;
@@ -232,6 +233,7 @@ const ParticleText = ({
           }
         }
 
+        if (Math.abs(baseX - particle.x) > 0.05 || Math.abs(baseY - particle.y) > 0.05) settling = true;
         const follow = reducedMotion ? 1 : 0.22;
         particle.x += (baseX - particle.x) * follow;
         particle.y += (baseY - particle.y) * follow;
@@ -248,7 +250,7 @@ const ParticleText = ({
       }
 
       animationFrame = null;
-      if (!staticQuery.matches && (!document.hidden) && (gathering || idleDrift > 0 || pointer.active || pointerRepel > 0)) {
+      if (!staticQuery.matches && (!document.hidden) && (gathering || idleDrift > 0 || pointer.active || settling)) {
         animationFrame = window.requestAnimationFrame(render);
       }
     };
@@ -390,19 +392,22 @@ const ParticleText = ({
     };
 
     const handlePointerMove = (event: PointerEvent): void => {
+      if (event.pointerType !== 'mouse' || reducedMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
       const rect = canvas.getBoundingClientRect();
       pointer.x = event.clientX - rect.left;
       pointer.y = event.clientY - rect.top;
       pointer.active = true;
+      ensureRenderLoop();
     };
 
     const handlePointerLeave = (): void => {
       pointer.active = false;
+      if (!staticQuery.matches) ensureRenderLoop();
     };
 
     const handlePointerEnter = (event: PointerEvent): void => {
       handlePointerMove(event);
-      if (trigger === 'hover') startGather(true);
+      if (pointer.active && trigger === 'hover') startGather(true);
     };
 
     const handleClick = (): void => {

@@ -15,6 +15,7 @@
 .particle-text__canvas {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: block;
   opacity: 0;
 }
@@ -30,7 +31,7 @@
 @media (min-width: 1024px) {
   .hero-particle-text { font-size: 3.15rem; }
 }
-@media (max-width: 639px), (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .particle-text .particle-text__canvas { display: none; }
   .particle-text[data-ready="true"] .particle-text__fallback { opacity: 1; }
 }

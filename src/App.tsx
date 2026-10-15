@@ -592,8 +592,8 @@ function App() {
                 gatherDuration={1400}
                 stagger={180}
                 idleDrift={0}
-                pointerRepel={12}
-                repelRadius={65}
+                pointerRepel={50}
+                repelRadius={100}
                 glow={false}
               />
 
@@ -612,8 +612,8 @@ function App() {
                   gatherDuration={1400}
                   stagger={180}
                   idleDrift={0}
-                  pointerRepel={12}
-                  repelRadius={65}
+                  pointerRepel={50}
+                  repelRadius={100}
                   glow={false}
                 />
               </div>

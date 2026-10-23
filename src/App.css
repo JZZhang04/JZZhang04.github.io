@@ -222,3 +222,41 @@
     transform: none !important;
   }
 }
+
+.experience-timeline > article + article {
+  margin-top: 0.75rem;
+}
+@media (min-width: 768px) {
+  .experience-timeline > article + article {
+    margin-top: -4rem;
+  }
+}
+
+.timeline-entry::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  left: 1.4rem;
+  width: 1.1rem;
+  height: 1px;
+  background: rgba(69, 214, 255, 0.55);
+}
+
+/* Translate the card content only, keeping connectors anchored to the timeline. */
+.timeline-entry.section-fade {
+  transform: none;
+}
+.timeline-entry > div {
+  transform: translateY(18px);
+  transition: transform 600ms ease-out;
+}
+.timeline-entry.is-visible > div {
+  transform: none;
+}
+@media (min-width: 768px) {
+  .timeline-entry::before { left: 50%; width: 2.5rem; }
+  .timeline-entry-left::before { left: calc(50% - 2.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timeline-entry > div { transform: none; transition: none; }
+}

@@ -28,7 +28,7 @@ type Project = {
 };
 
 type TimelineItem = {
-  logo: string;
+  logo?: string;
   alt: string;
   name: string;
   title: string;
@@ -356,6 +356,13 @@ const skillEdgeTypes = {
 
 const timeline: TimelineItem[] = [
   {
+    alt: "Intellilake",
+    name: "Intellilake",
+    title: "Software Engineer Intern",
+    detail: "Developed React and TypeScript components, built UI interfaces, and integrated APIs and workflows for data management platform.",
+    period: "Boston · 2026",
+  },
+  {
     logo: "/logos/blinkle.png",
     alt: "Blinkle AI",
     name: "Blinkle AI",
@@ -421,7 +428,7 @@ function App() {
   const skillGraph = useMemo(() => getSkillGraph(), []);
 
   useEffect(() => {
-    const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".js-reveal"));
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".js-reveal:not(.timeline-entry)"));
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -435,6 +442,36 @@ function App() {
 
     revealItems.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const items = Array.from(document.querySelectorAll<HTMLElement>(".timeline-entry"));
+    const pending = new Set<HTMLElement>();
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let disposed = false;
+    const revealNext = () => {
+      if (disposed) return;
+      const next = items.find((item) => pending.has(item));
+      if (!next) { timer = undefined; return; }
+      pending.delete(next);
+      next.classList.add("is-visible");
+      timer = setTimeout(revealNext, 220);
+    };
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          pending.add(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      }
+      if (timer === undefined) revealNext();
+    }, { threshold: 0.2, rootMargin: "0px 0px -15% 0px" });
+    items.forEach((item) => observer.observe(item));
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -711,28 +748,28 @@ function App() {
             <h2 className="mt-4 font-[Instrument_Serif] text-[2.45rem] leading-[1.02] tracking-[0.01em] text-[#F3F6FB] sm:text-[3.05rem]">Experience and Education</h2>
           </div>
 
-          <div className="relative space-y-2 before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-[#45D6FF]/0 before:via-[#45D6FF]/40 before:to-[#45D6FF]/0 md:before:left-1/2">
+          <div className="experience-timeline relative before:absolute before:left-[1.4rem] before:top-4 before:h-[calc(100%-2rem)] before:w-px before:bg-gradient-to-b before:from-[#45D6FF]/0 before:via-[#45D6FF]/40 before:to-[#45D6FF]/0 md:before:left-1/2">
             {timeline.map((item, index) => (
               <article
                 key={`${item.name}-${item.period}`}
-                className={`js-reveal section-fade relative grid gap-4 md:grid-cols-2 ${index % 2 === 0 ? "" : "md:[&>*:first-child]:order-2"}`}
-                style={{ transitionDelay: `${index * 90}ms` }}
+                className={`js-reveal section-fade timeline-entry relative grid md:grid-cols-2 ${index % 2 === 0 ? "timeline-entry-right" : "timeline-entry-left md:[&>div:first-of-type]:order-2"}`}
               >
                 <div className={`hidden md:block ${index % 2 === 0 ? "md:pr-10" : "md:pl-10"}`} />
                 <div className={`relative ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
-                  <div className="absolute left-[1.4rem] top-8 h-3 w-3 -translate-x-1/2 rounded-full border border-[#45D6FF]/50 bg-[#45D6FF] shadow-[0_0_26px_rgba(69,214,255,0.7)] md:left-auto md:right-auto md:top-10 md:-translate-x-0" />
-                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#120F17] p-6 backdrop-blur md:ml-0">
+                  <div className="ml-10 rounded-[1.8rem] border border-white/10 bg-[#120F17] p-5 backdrop-blur md:ml-0">
                     <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-[#120F17]">
-                        <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[#120F17]">
+                        {item.logo ? (
+                          <img src={item.logo} alt={item.alt} className="h-7 w-7 object-contain" />
+                        ) : null}
                       </div>
                       <div>
                         <div className="text-lg font-semibold text-[#F3F6FB]">{item.name}</div>
                         <div className="text-xs uppercase tracking-[0.22em] text-[#AAB4C4]">{item.period}</div>
                       </div>
                     </div>
-                    <div className="mt-5 text-base font-medium text-[#F3F6FB]">{item.title}</div>
-                    <p className="mt-3 text-sm leading-7 text-[#AAB4C4]">{item.detail}</p>
+                    <div className="mt-4 text-base font-medium text-[#F3F6FB]">{item.title}</div>
+                    <p className="mt-2 text-sm leading-6 text-[#AAB4C4]">{item.detail}</p>
                   </div>
                 </div>
               </article>
